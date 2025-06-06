@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Personal Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header, section { padding: 20px; }
+        .slider { position: relative; width: 80%; margin: 20px auto; overflow: hidden; }
+        .slides { display: flex; transition: transform 0.5s ease; }
+        .slide { min-width: 100%; box-sizing: border-box; padding: 20px; background: #f0f0f0; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #333; color: #fff; border: none; padding: 10px; cursor: pointer; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .connections a { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+    </header>
+
+    <!-- Projects Slider -->
+    <section>
+        <h2>My Projects</h2>
+        <div class="slider" id="projects-slider">
+            <button class="slider-btn prev" onclick="moveSlide('projects', -1)">&#10094;</button>
+            <div class="slides" id="projects-slides">
+                <div class="slide">Project 1: Description and link</div>
+                <div class="slide">Project 2: Description and link</div>
+                <div class="slide">Project 3: Description and link</div>
+            </div>
+            <button class="slider-btn next" onclick="moveSlide('projects', 1)">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section>
+        <h2>About Me</h2>
+        <p>
+            Hi, I'm Gokay! I'm a developer passionate about building cool projects and sharing knowledge.
+        </p>
+    </section>
+
+    <!-- Connections -->
+    <section class="connections">
+        <h2>Find Me Online</h2>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+        <a href="mailto:your@email.com">Email</a>
+    </section>
+
+    <!-- Blog Slider -->
+    <section>
+        <h2>Latest Blog Posts</h2>
+        <div class="slider" id="blog-slider">
+            <button class="slider-btn prev" onclick="moveSlide('blog', -1)">&#10094;</button>
+            <div class="slides" id="blog-slides">
+                <div class="slide">Blog Post 1: Title and excerpt</div>
+                <div class="slide">Blog Post 2: Title and excerpt</div>
+                <div class="slide">Blog Post 3: Title and excerpt</div>
+            </div>
+            <button class="slider-btn next" onclick="moveSlide('blog', 1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        // Simple slider logic for both sliders
+        const sliders = {
+            projects: { index: 0, slidesId: 'projects-slides' },
+            blog: { index: 0, slidesId: 'blog-slides' }
+        };
+
+        function moveSlide(sliderName, direction) {
+            const slider = sliders[sliderName];
+            const slides = document.getElementById(slider.slidesId);
+            const total = slides.children.length;
+            slider.index = (slider.index + direction + total) % total;
+            slides.style.transform = `translateX(-${slider.index * 100}%)`;
+        }
+    </script>
+</body>
+</html>
