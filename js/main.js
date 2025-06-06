@@ -5,8 +5,8 @@ window.addEventListener('scroll', function() {
     const scrollY = window.scrollY || window.pageYOffset;
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const percent = Math.min(scrollY / docHeight, 1);
-    // Interpolate between two rgba values for gradient stops
-    const start = [30,87,153,0.7];
+    // Use #3832CD as the base color
+    const start = [56,50,205,0.7];
     const mid = [41,137,216,0.7];
     const end = [32,124,202,0.9 + percent * 0.5]; // gets darker as you scroll
 
