@@ -8,371 +8,157 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        min-height: 100vh;
-        font-family: 'Montserrat', Arial, sans-serif;
-        background: #020817;
-        color: #f6f6f6;
-        transition: background 0.7s;
-      }
-      .profile-img {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid #fff;
-        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-        margin-bottom: 1.5rem;
-      }
-      .main-content {
-        margin-left: 220px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: transparent;
-      }
-      .container-section {
-        background: #020817;
-        border-radius: 1.5rem;
-        box-shadow: 0 4px 32px rgba(2,8,23,0.35);
-        padding: 3rem 2rem 2.5rem 2rem;
-        margin-bottom: 3rem;
-        width: 100%;
-        max-width: 1100px;
-      }
-      .section-title {
-        font-size: 2.5rem;
-        border-bottom: 2px solid #b6e0fe;
-        display: inline-block;
-        padding-bottom: 0.3em;
-        margin-bottom: 1.5em;
-        color: #b6e0fe;
-        font-weight: 700;
-      }
-      h1.display-4 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: 1px;
-      }
-      h2, h3, h4 {
-        font-family: 'Montserrat', Arial, sans-serif;
-        font-weight: 700;
-        color: #b6e0fe;
-      }
-      .skills-group {
-        background: #020817;
-        border-radius: 1rem;
-        padding: 2rem 1.5rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 16px rgba(2,8,23,0.18);
-      }
-      .skills-group h4 {
-        font-size: 1.35rem;
-        color: #b6e0fe;
-        margin-bottom: 1rem;
-        font-weight: 700;
-      }
-      .skills-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.2rem 2.5rem;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-      }
-      .skills-list li {
-        font-size: 1.08rem;
-        color: #f6f6f6;
-        background: #071022;
-        border-radius: 0.5rem;
-        padding: 0.5rem 1.1rem;
-        margin-bottom: 0.5rem;
-        display: inline-block;
-      }
-      .list-group-item {
-        background: transparent !important;
-        color: #f6f6f6;
-        border: none;
-        font-size: 1.08rem;
-      }
-      .lead {
-        font-size: 1.25rem;
-        color: #e3e3e3;
-      }
-      .btn-primary {
-        background: #071022;
-        border: none;
-        color: #f6f6f6;
-        font-weight: 600;
-        transition: background 0.2s, color 0.2s;
-      }
-      .btn-primary:hover {
-        background: #010510;
-        color: #fff;
-      }
-      .modal-content {
-        background: #020817;
-        color: #f6f6f6;
-        border-radius: 1rem;
-        border: none;
-      }
-      .form-control, .form-control:focus, .form-control-file {
-        background: #071022;
-        color: #f6f6f6;
-        border: 1px solid #222a3a;
-      }
-      label {
-        color: #f6f6f6;
-      }
-      .modal-header, .modal-footer {
-        border: none;
-      }
-      .bg-dark, .footer, footer {
-        background-color: #020817 !important;
-        color: #f6f6f6 !important;
-        backdrop-filter: blur(2px);
-      }
-      a, a:visited {
-        color: #b6e0fe;
-        transition: color 0.2s;
-      }
-      a:hover {
-        color: #fff;
-        text-decoration: underline;
-      }
-      @media (max-width: 991.98px) {
-        .main-content {
-          margin-left: 0;
-        }
-        #sidebarNav {
-          display: none !important;
-        }
-        .container-section {
-          padding: 2rem 0.5rem 1.5rem 0.5rem;
-        }
-      }
-      section {
-        margin-bottom: 60px;
-      }
-    </style>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav id="sidebarNav" class="d-none d-md-flex flex-column position-fixed vh-100 bg-dark text-white p-4 sidebar-section" style="left:0;top:0;z-index:1040;width:220px;">
-        <h3 class="mb-4" style="font-weight:700;">Menu</h3>
-        <a class="nav-link text-white mb-2" href="#about"><i class="fas fa-user mr-2"></i>About Me</a>
-        <a class="nav-link text-white mb-2" href="#education"><i class="fas fa-graduation-cap mr-2"></i>Education</a>
-        <a class="nav-link text-white mb-2" href="#skills"><i class="fas fa-cogs mr-2"></i>Skills</a>
-        <a class="nav-link text-white mb-2" href="#experience"><i class="fas fa-briefcase mr-2"></i>Experience</a>
-        <a class="nav-link text-white mb-2" href="#certifications"><i class="fas fa-certificate mr-2"></i>Certifications</a>
-        <a class="nav-link text-white mb-2" href="#achievements"><i class="fas fa-trophy mr-2"></i>Achievements</a>
-        <a class="nav-link text-white mb-2" href="#contact"><i class="fas fa-envelope mr-2"></i>Get in Touch</a>
-    </nav>
+    <header>
+        <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img" style="width:180px;height:180px;border-radius:50%;border:4px solid #fff;box-shadow:0 2px 16px rgba(0,0,0,0.12);margin-bottom:1.5rem;">
+        <h1>Gökay Akçay</h1>
+        <p class="lead" style="max-width:700px;margin:0 auto;">
+            Junior Data Scientist<br>
+            <a href="mailto:gokay.akcay19@gmail.com">gokay.akcay19@gmail.com</a><br>
+            <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank">LinkedIn</a> &bull; 
+            <a href="https://github.com/Gokay1904" target="_blank">GitHub</a> &bull; 
+            <a href="https://www.kaggle.com/gokayakcay" target="_blank">Kaggle</a>
+        </p>
+        <p class="lead" style="max-width:700px;margin:1.5rem auto 0 auto;">
+            Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
+        </p>
+    </header>
 
-    <!-- Main Content Wrapper -->
-    <div class="main-content d-flex flex-column align-items-center">
-        <!-- About Me Section -->
-        <section id="about" class="container-section text-center">
-            <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
-            <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
-            <p class="lead mx-auto" style="max-width:700px;">
-                Junior Data Scientist<br>
-                <a href="mailto:gokay.akcay19@gmail.com">gokay.akcay19@gmail.com</a><br>
-                <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank">LinkedIn</a> &bull; 
-                <a href="https://github.com/Gokay1904" target="_blank">GitHub</a> &bull; 
-                <a href="https://www.kaggle.com/gokayakcay" target="_blank">Kaggle</a>
-            </p>
-            <p class="lead mx-auto" style="max-width:700px;">
-                Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
-            </p>
-        </section>
+    <section class="section">
+        <h2>Education</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background:transparent;">
+                <strong>B.S. Physics Engineering</strong> – Istanbul Technical University<br>
+                GPA: 3.38/4.0 &nbsp; | &nbsp; 2020-2025<br>
+                ITU English Proficiency Grade: 94/100<br>
+                Graduation Project: Financial Forecasting with AI Transformer Models (Analyzing Twitter and Stock Correlations) & Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
+                Focus: Quantum Mechanics, Software, Statistics, Artificial Intelligence & PINNs, Electronics, Optical Design
+            </li>
+        </ul>
+    </section>
 
-        <!-- Education Section -->
-        <section id="education" class="container-section">
-            <h2 class="section-title">Education</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <strong>B.S. Physics Engineering</strong> – Istanbul Technical University<br>
-                    GPA: 3.38/4.0 &nbsp; | &nbsp; 2020-2025<br>
-                    ITU English Proficiency Grade: 94/100<br>
-                    Graduation Project: Financial Forecasting with AI Transformer Models (Analyzing Twitter and Stock Correlations) & Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
-                    Focus: Quantum Mechanics, Software, Statistics, Artificial Intelligence & PINNs, Electronics, Optical Design
-                </li>
-            </ul>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="container-section">
-            <h2 class="section-title text-center">Skills</h2>
-            <div class="skills-group">
-                <h4><i class="fas fa-code mr-2"></i>Technical Skills</h4>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h4>Programming Languages</h4>
-                        <ul class="skills-list">
-                            <li>Python (Numpy, Pandas, Pytorch, Sklearn, Keras, Flask, ZeroMQ)</li>
-                            <li>C#</li>
-                            <li>C++</li>
-                            <li>Java</li>
-                            <li>SQL</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <h4>Tools & Technologies</h4>
-                        <ul class="skills-list">
-                            <li>Excel</li>
-                            <li>PowerBI</li>
-                            <li>Unity Engine</li>
-                            <li>Linux</li>
-                            <li>Git</li>
-                            <li>Docker</li>
-                            <li>Microsoft Azure</li>
-                        </ul>
-                    </div>
+    <section class="section">
+        <h2>Skills</h2>
+        <div class="skills-group">
+            <h4><i class="fas fa-code mr-2"></i>Technical Skills</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h4>Programming Languages</h4>
+                    <ul class="skills-list">
+                        <li>Python (Numpy, Pandas, Pytorch, Sklearn, Keras, Flask, ZeroMQ)</li>
+                        <li>C#</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h4>Tools & Technologies</h4>
+                    <ul class="skills-list">
+                        <li>Excel</li>
+                        <li>PowerBI</li>
+                        <li>Unity Engine</li>
+                        <li>Linux</li>
+                        <li>Git</li>
+                        <li>Docker</li>
+                        <li>Microsoft Azure</li>
+                    </ul>
                 </div>
             </div>
-            <div class="skills-group">
-                <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
-                <ul class="skills-list">
-                    <li>Googling</li>
-                    <li>Prompt Engineering</li>
-                    <li>Adaptability</li>
-                    <li>Time Management</li>
-                    <li>Communication</li>
-                    <li>Creativity & Innovation</li>
-                    <li>Problem Solving</li>
-                    <li>Presentation</li>
+        </div>
+        <div class="skills-group">
+            <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
+            <ul class="skills-list">
+                <li>Googling</li>
+                <li>Prompt Engineering</li>
+                <li>Adaptability</li>
+                <li>Time Management</li>
+                <li>Communication</li>
+                <li>Creativity & Innovation</li>
+                <li>Problem Solving</li>
+                <li>Presentation</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Projects</h2>
+        <div id="pinned-projects" class="row justify-content-center"></div>
+    </section>
+
+    <section class="section">
+        <h2>Experience</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background:transparent;">
+                <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
+                <em>02/2024 – 07/2024</em>
+                <ul>
+                    <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
+                    <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
+                    <li>Developed UI and backend architecture using Unity Engine with C#.</li>
+                    <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
                 </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Certifications</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background:transparent;"><strong>IBM</strong> | Machine Learning with Python</li>
+            <li class="list-group-item" style="background:transparent;"><strong>Datacamp</strong> | Data Analyst with Python</li>
+            <li class="list-group-item" style="background:transparent;"><strong>Stanford Online</strong> | Supervised Machine Learning</li>
+            <li class="list-group-item" style="background:transparent;"><strong>HackerRank</strong> | SQL (Intermediate) Certificate</li>
+            <li class="list-group-item" style="background:transparent;"><strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Achievements</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background:transparent;">
+                <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
+                Coderspace & iyzico | April - May 2024<br>
+                <ul>
+                    <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
+                    <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section text-center">
+        <h2>Get in Touch</h2>
+        <p class="lead mb-4">
+            You can reach out to me directly using the form below. I will get back to you as soon as possible!
+        </p>
+        <form class="mx-auto" style="max-width:500px;" method="POST" action="https://formspree.io/f/xqabelgp">
+            <div class="form-group text-left">
+                <label for="email">Your Email</label>
+                <input type="email" class="form-control" id="email" name="from" required>
             </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="container-section">
-            <h2 class="section-title">Experience</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
-                    <em>02/2024 – 07/2024</em>
-                    <ul>
-                        <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
-                        <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
-                        <li>Developed UI and backend architecture using Unity Engine with C#.</li>
-                        <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="container-section">
-            <h2 class="section-title">Certifications</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>IBM</strong> | Machine Learning with Python</li>
-                <li class="list-group-item"><strong>Datacamp</strong> | Data Analyst with Python</li>
-                <li class="list-group-item"><strong>Stanford Online</strong> | Supervised Machine Learning</li>
-                <li class="list-group-item"><strong>HackerRank</strong> | SQL (Intermediate) Certificate</li>
-                <li class="list-group-item"><strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect</li>
-            </ul>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements" class="container-section">
-            <h2 class="section-title">Achievements</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
-                    Coderspace & iyzico | April - May 2024<br>
-                    <ul>
-                        <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
-                        <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="container-section">
-            <h2 class="section-title text-center">Projects</h2>
-            <div id="pinned-projects" class="row justify-content-center"></div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="container-section text-center">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="lead mb-4">
-                You can reach out to me directly using the form below. I will get back to you as soon as possible!
-            </p>
-            <form class="mx-auto" style="max-width:500px;" method="POST" action="https://formspree.io/f/xqabelgp">
-                <div class="form-group text-left">
-                    <label for="email">Your Email</label>
-                    <input type="email" class="form-control" id="email" name="from" required>
-                </div>
-                <div class="form-group text-left">
-                    <label for="subject">Subject</label>
-                    <input type="text" class="form-control" id="subject" name="subject" required>
-                </div>
-                <div class="form-group text-left">
-                    <label for="body">Message</label>
-                    <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
-                </div>
-                <div class="form-group text-left">
-                    <label for="attachment">Attachment (optional)</label>
-                    <input type="file" class="form-control-file" id="attachment" disabled>
-                    <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
-            </form>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-3 mt-auto">
-            <p>&copy; 2025 Gökay Akçay | Portfolio</p>
-        </footer>
-    </div>
-
-    <!-- Email Modal -->
-    <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <form class="modal-content" method="POST" action="https://formspree.io/f/xqabelgp">
-          <div class="modal-header">
-            <h5 class="modal-title" id="emailModalLabel">Send Email to Gökay Akçay</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                  <label for="email">Your Email</label>
-                  <input type="email" class="form-control" id="email" name="from" required>
-              </div>
-              <div class="form-group">
-                  <label for="subject">Subject</label>
-                  <input type="text" class="form-control" id="subject" name="subject" required>
-              </div>
-              <div class="form-group">
-                  <label for="body">Message</label>
-                  <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
-              </div>
-              <div class="form-group">
-                  <label for="attachment">Attachment (optional)</label>
-                  <input type="file" class="form-control-file" id="attachment" disabled>
-                  <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Send</button>
-          </div>
+            <div class="form-group text-left">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="form-group text-left">
+                <label for="body">Message</label>
+                <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
+            </div>
+            <div class="form-group text-left">
+                <label for="attachment">Attachment (optional)</label>
+                <input type="file" class="form-control-file" id="attachment" disabled>
+                <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
         </form>
-      </div>
-    </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="footer">
+        &copy; 2025 Gökay Akçay | Portfolio
+    </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>
