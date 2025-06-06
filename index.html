@@ -33,9 +33,9 @@
         background: transparent;
       }
       .container-section {
-        background: rgba(10,14,30,0.98);
+        background: #020817;
         border-radius: 1.5rem;
-        box-shadow: 0 4px 32px rgba(30,87,153,0.12);
+        box-shadow: 0 4px 32px rgba(2,8,23,0.35);
         padding: 3rem 2rem 2.5rem 2rem;
         margin-bottom: 3rem;
         width: 100%;
@@ -62,11 +62,11 @@
         color: #b6e0fe;
       }
       .skills-group {
-        background: rgba(20,24,40,0.98);
+        background: #020817;
         border-radius: 1rem;
         padding: 2rem 1.5rem;
         margin-bottom: 2rem;
-        box-shadow: 0 2px 16px rgba(30,87,153,0.10);
+        box-shadow: 0 2px 16px rgba(2,8,23,0.18);
       }
       .skills-group h4 {
         font-size: 1.35rem;
@@ -85,7 +85,7 @@
       .skills-list li {
         font-size: 1.08rem;
         color: #f6f6f6;
-        background: rgba(32,40,80,0.45);
+        background: #071022;
         border-radius: 0.5rem;
         padding: 0.5rem 1.1rem;
         margin-bottom: 0.5rem;
@@ -101,6 +101,47 @@
         font-size: 1.25rem;
         color: #e3e3e3;
       }
+      .btn-primary {
+        background: #071022;
+        border: none;
+        color: #f6f6f6;
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s;
+      }
+      .btn-primary:hover {
+        background: #010510;
+        color: #fff;
+      }
+      .modal-content {
+        background: #020817;
+        color: #f6f6f6;
+        border-radius: 1rem;
+        border: none;
+      }
+      .form-control, .form-control:focus, .form-control-file {
+        background: #071022;
+        color: #f6f6f6;
+        border: 1px solid #222a3a;
+      }
+      label {
+        color: #f6f6f6;
+      }
+      .modal-header, .modal-footer {
+        border: none;
+      }
+      .bg-dark, .footer, footer {
+        background-color: #020817 !important;
+        color: #f6f6f6 !important;
+        backdrop-filter: blur(2px);
+      }
+      a, a:visited {
+        color: #b6e0fe;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
       @media (max-width: 991.98px) {
         .main-content {
           margin-left: 0;
@@ -111,6 +152,9 @@
         .container-section {
           padding: 2rem 0.5rem 1.5rem 0.5rem;
         }
+      }
+      section {
+        margin-bottom: 60px;
       }
     </style>
 </head>
