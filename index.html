@@ -33,7 +33,7 @@
         text-decoration: none;
       }
       .card {
-        background: rgba(255,255,255,0.85);
+        background: rgba(255,255,255,0.92);
         border-radius: 1rem;
         box-shadow: 0 4px 24px rgba(30,87,153,0.08);
       }
@@ -41,55 +41,127 @@
         background-color: rgba(30,87,153,0.85) !important;
         backdrop-filter: blur(2px);
       }
+      .sidebar-section {
+        min-height: 100vh;
+      }
+      .main-content {
+        margin-left: 220px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 991.98px) {
+        .main-content {
+          margin-left: 0;
+        }
+        #sidebarNav {
+          display: none !important;
+        }
+      }
+      section {
+        margin-bottom: 60px;
+      }
     </style>
 </head>
 <body>
     <!-- Sidebar Navigation -->
-    <nav id="sidebarNav" class="d-none d-md-flex flex-column position-fixed vh-100 bg-dark text-white p-4" style="left:0;top:0;z-index:1040;width:220px;">
+    <nav id="sidebarNav" class="d-none d-md-flex flex-column position-fixed vh-100 bg-dark text-white p-4 sidebar-section" style="left:0;top:0;z-index:1040;width:220px;">
         <h3 class="mb-4">Menu</h3>
-        <a class="nav-link text-white mb-2" href="#header" style="font-size:1.1rem;">Home</a>
-        <a class="nav-link text-white mb-2" href="#projects" style="font-size:1.1rem;">Portfolio</a>
-        <a class="nav-link text-white mb-2" href="#contact" style="font-size:1.1rem;">Contact</a>
-        <!-- Add more links as you add more sections -->
+        <a class="nav-link text-white mb-2" href="#about" style="font-size:1.1rem;">
+            <i class="fas fa-user mr-2"></i>About Me
+        </a>
+        <a class="nav-link text-white mb-2" href="#projects" style="font-size:1.1rem;">
+            <i class="fas fa-folder-open mr-2"></i>Projects
+        </a>
+        <a class="nav-link text-white mb-2" href="#skills" style="font-size:1.1rem;">
+            <i class="fas fa-code mr-2"></i>Skills
+        </a>
+        <a class="nav-link text-white mb-2" href="#achievements" style="font-size:1.1rem;">
+            <i class="fas fa-trophy mr-2"></i>Achievements
+        </a>
+        <a class="nav-link text-white mb-2" href="#contact" style="font-size:1.1rem;">
+            <i class="fas fa-envelope mr-2"></i>Get in Touch
+        </a>
     </nav>
 
-    <!-- Main Content Wrapper (add margin-left for sidebar space) -->
-    <div class="main-content" style="margin-left:220px;">
-        <!-- Header -->
-        <header id="header" class="text-center py-5 border-bottom">
-            <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
-            <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
-            <p class="lead mx-auto" style="max-width:600px;">
-                I’m a B.E. Applied Physics student with extensive experience in programming and game development.<br>
-                I started coding in Java at 12, later transitioning to C# for game development with Unity. Over the years, I expanded my skills to Python, focusing on data science using libraries like Pandas, NumPy, and Scikit-learn.<br>
-                I enjoy working on both individual projects and team collaborations, particularly in game jams and data-driven tasks. Passionate about continuous learning and problem-solving.
-            </p>
-            <div class="social-links mb-3">
-                <a href="https://github.com/Gokay1904" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/g%C3%B6kay-ak%C3%A7ay-647522188/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" title="Email" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope"></i></a>
-            </div>
-            <a href="#projects" class="btn btn-dark btn-lg mt-2">View My Work</a>
-        </header>
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- About Me Section -->
+        <section id="about" class="container py-5">
+            <header class="text-center border-bottom pb-4 mb-5">
+                <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+                <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
+                <p class="lead mx-auto" style="max-width:600px;">
+                    I’m a B.E. Applied Physics student with extensive experience in programming and game development.<br>
+                    I started coding in Java at 12, later transitioning to C# for game development with Unity. Over the years, I expanded my skills to Python, focusing on data science using libraries like Pandas, NumPy, and Scikit-learn.<br>
+                    I enjoy working on both individual projects and team collaborations, particularly in game jams and data-driven tasks. Passionate about continuous learning and problem-solving.
+                </p>
+                <div class="social-links mb-3">
+                    <a href="https://github.com/Gokay1904" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/g%C3%B6kay-ak%C3%A7ay-647522188/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="Email" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope"></i></a>
+                </div>
+                <a href="#projects" class="btn btn-dark btn-lg mt-2">View My Work</a>
+            </header>
+        </section>
 
         <!-- Projects Section -->
-        <main class="container py-5">
-            <section id="projects">
-                <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
-                <div class="row" id="pinned-projects">
-                    <!-- Pinned repos will be loaded here by JS -->
+        <section id="projects" class="container py-5">
+            <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
+            <div class="row" id="pinned-projects">
+                <!-- Pinned repos will be loaded here by JS -->
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="container py-5">
+            <h2 class="text-center mb-5 font-weight-bold">Skills</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent"><i class="fab fa-python mr-2"></i>Python (Pandas, NumPy, Scikit-learn)</li>
+                        <li class="list-group-item bg-transparent"><i class="fab fa-java mr-2"></i>Java</li>
+                        <li class="list-group-item bg-transparent"><i class="fab fa-unity mr-2"></i>C# (Unity)</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-database mr-2"></i>Data Science & Machine Learning</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-gamepad mr-2"></i>Game Development</li>
+                    </ul>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="container py-5">
+            <h2 class="text-center mb-5 font-weight-bold">Achievements</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent"><i class="fas fa-medal mr-2"></i>1st Place, XYZ Game Jam 2024</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-certificate mr-2"></i>Certified Data Scientist</li>
+                        <!-- Add more achievements here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container py-5">
+            <h2 class="text-center mb-5 font-weight-bold">Get in Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <button class="btn btn-primary btn-lg d-block mx-auto" data-toggle="modal" data-target="#emailModal">
+                        <i class="fas fa-envelope mr-2"></i>Contact Me
+                    </button>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-3">
+        <footer class="bg-dark text-white text-center py-3 mt-auto">
             <p>&copy; 2025 Gökay Akçay | Portfolio</p>
         </footer>
     </div>
 
-    <!-- Email Modal (Contact Section) -->
-    <div id="contact"></div>
+    <!-- Email Modal -->
     <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <form class="modal-content" method="POST" action="https://formspree.io/f/xqabelgp">
