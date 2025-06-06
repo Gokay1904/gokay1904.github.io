@@ -16,7 +16,7 @@ window.addEventListener('scroll', function() {
 });
 
 // Otomatik olarak GitHub pinned projelerini çek ve göster
-fetch('https://gh-pinned-repos.egoist.dev/?username=Gokay1904')
+fetch('https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=Gokay1904')
   .then(response => response.json())
   .then(repos => {
     const container = document.getElementById('pinned-projects');
