@@ -14,3 +14,25 @@ window.addEventListener('scroll', function() {
 
     document.body.style.background = `linear-gradient(180deg, ${rgba(start)} 0%, ${rgba(mid)} 50%, ${rgba(end)} 100%)`;
 });
+
+// Otomatik olarak GitHub pinned projelerini çek ve göster
+fetch('https://gh-pinned-repos.egoist.dev/?username=Gokay1904')
+  .then(response => response.json())
+  .then(repos => {
+    const container = document.getElementById('pinned-projects');
+    if (!container) return;
+    container.innerHTML = '';
+    repos.forEach(repo => {
+      container.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${repo.repo}</h5>
+              <p class="card-text flex-grow-1">${repo.description || ''}</p>
+              <a href="${repo.link}" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  });
