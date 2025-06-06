@@ -113,6 +113,33 @@ h2, h3, .edu-title {
     background: #020817 !important;
 }
 
+#sidebarNav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    color: #f6f6f6 !important;
+    border-radius: 0.5rem;
+    transition: background 0.18s, color 0.18s;
+    padding: 0.55rem 1rem;
+    font-weight: 500;
+    font-size: 1.08rem;
+    white-space: nowrap;
+}
+
+#sidebarNav .nav-link i {
+    font-size: 1.15em;
+    min-width: 1.5em;
+    text-align: center;
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+#sidebarNav .nav-link:hover, #sidebarNav .nav-link:focus {
+    background: #071022 !important;
+    color: #fff !important;
+    text-decoration: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
