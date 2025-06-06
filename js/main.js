@@ -1,12 +1,12 @@
 // This file contains custom JavaScript code for the website, which can be used to add interactivity or manipulate the DOM.
 
-// Only use #020817 and a slightly darker shade on scroll
+// Only use #020817 and lerp to #010510 as you scroll to the bottom (no section loop)
 window.addEventListener('scroll', function() {
     const scrollY = window.scrollY || window.pageYOffset;
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const percent = Math.min(scrollY / docHeight, 1);
 
-    // #020817 (2,8,23), darker: #010510 (1,5,16)
+    // #020817 (2,8,23), #010510 (1,5,16)
     function lerp(a, b, t) { return Math.round(a + (b - a) * t); }
     const r = lerp(2, 1, percent);
     const g = lerp(8, 5, percent);
