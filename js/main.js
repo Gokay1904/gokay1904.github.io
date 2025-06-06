@@ -66,3 +66,31 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
     }
   });
 });
+
+// Section-based background color transitions
+const sectionColors = [
+  { id: 'about', color: 'linear-gradient(180deg, #3832cd 0%, #2989d8 50%, #207cca 100%)' },
+  { id: 'education', color: 'linear-gradient(180deg, #207cca 0%, #20bfa9 100%)' },
+  { id: 'skills', color: 'linear-gradient(180deg, #20bfa9 0%, #f7971e 100%)' },
+  { id: 'experience', color: 'linear-gradient(180deg, #f7971e 0%, #f44369 100%)' },
+  { id: 'certifications', color: 'linear-gradient(180deg, #f44369 0%, #8e54e9 100%)' },
+  { id: 'achievements', color: 'linear-gradient(180deg, #8e54e9 0%, #3832cd 100%)' },
+  { id: 'contact', color: 'linear-gradient(180deg, #3832cd 0%, #2989d8 100%)' }
+];
+
+function getCurrentSection() {
+  let current = sectionColors[0];
+  for (const section of sectionColors) {
+    const el = document.getElementById(section.id);
+    if (el && window.scrollY + 100 >= el.offsetTop) {
+      current = section;
+    }
+  }
+  return current;
+}
+
+window.addEventListener('scroll', () => {
+  const section = getCurrentSection();
+  document.body.style.background = section.color;
+  document.body.style.transition = 'background 0.7s';
+});
