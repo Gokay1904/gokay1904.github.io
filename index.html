@@ -6,6 +6,22 @@
     <title>My Bootstrap Website</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+      body {
+        min-height: 100vh;
+        background: linear-gradient(180deg, rgba(30,87,153,0.7) 0%, rgba(41,137,216,0.7) 50%, rgba(32,124,202,0.9) 100%);
+        transition: background 0.5s;
+      }
+      .bg-primary, .bg-dark {
+        background-color: rgba(30,87,153,0.85) !important;
+        backdrop-filter: blur(2px);
+      }
+      .card {
+        background: rgba(255,255,255,0.85);
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(30,87,153,0.08);
+      }
+    </style>
 </head>
 <body>
     <header class="bg-primary text-white text-center py-4">
@@ -14,7 +30,7 @@
 
     <main class="container mt-4">
         <!-- Hero Section -->
-        <section class="d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 60vh; background: #f8f9fa;">
+        <section class="d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 60vh; background: transparent;">
           <h1 class="display-3 font-weight-bold mb-3">Your Name</h1>
           <p class="lead mb-4">Designer & Developer</p>
           <a href="#projects" class="btn btn-dark btn-lg">View My Work</a>
@@ -45,5 +61,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      // Dynamic background gradient darkness on scroll
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const percent = Math.min(scrollY / docHeight, 1);
+        // Interpolate between two rgba values for gradient stops
+        const start = [30,87,153,0.7];
+        const mid = [41,137,216,0.7];
+        const end = [32,124,202,0.9 + percent * 0.5]; // gets darker as you scroll
+
+        function rgba(arr) { return `rgba(${arr[0]},${arr[1]},${arr[2]},${arr[3]})`; }
+
+        document.body.style.background = `linear-gradient(180deg, ${rgba(start)} 0%, ${rgba(mid)} 50%, ${rgba(end)} 100%)`;
+      });
+    </script>
 </body>
 </html>
