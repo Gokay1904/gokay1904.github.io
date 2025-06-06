@@ -251,9 +251,29 @@
         <!-- Contact Section -->
         <section id="contact" class="container-section text-center">
             <h2 class="section-title">Get in Touch</h2>
-            <button class="btn btn-primary btn-lg d-block mx-auto" data-toggle="modal" data-target="#emailModal">
-                <i class="fas fa-envelope mr-2"></i>Contact Me
-            </button>
+            <p class="lead mb-4">
+                You can reach out to me directly using the form below. I will get back to you as soon as possible!
+            </p>
+            <form class="mx-auto" style="max-width:500px;" method="POST" action="https://formspree.io/f/xqabelgp">
+                <div class="form-group text-left">
+                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="from" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="form-group text-left">
+                    <label for="body">Message</label>
+                    <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
+                </div>
+                <div class="form-group text-left">
+                    <label for="attachment">Attachment (optional)</label>
+                    <input type="file" class="form-control-file" id="attachment" disabled>
+                    <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
+            </form>
         </section>
 
         <!-- Footer -->
