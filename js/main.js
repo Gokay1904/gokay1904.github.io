@@ -53,10 +53,16 @@ if (container) {
 // Smooth scroll for sidebar links
 document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
   link.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if(target) {
-      e.preventDefault();
-      window.scrollTo({top: target.offsetTop - 20, behavior: 'smooth'});
+    const href = this.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - 20,
+          behavior: 'smooth'
+        });
+      }
     }
   });
 });
