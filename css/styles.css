@@ -111,6 +111,16 @@ h2, h3, .edu-title {
 
 #sidebarNav {
     background: #020817 !important;
+    width: 220px;
+    min-width: 220px;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+#sidebarNav h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #sidebarNav .nav-link {
@@ -124,6 +134,8 @@ h2, h3, .edu-title {
     font-weight: 500;
     font-size: 1.08rem;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #sidebarNav .nav-link i {
