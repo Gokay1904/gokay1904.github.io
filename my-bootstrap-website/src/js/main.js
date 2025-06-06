@@ -1,0 +1,1 @@
+// This file contains custom JavaScript code for the website, which can be used to add interactivity or manipulate the DOM.
