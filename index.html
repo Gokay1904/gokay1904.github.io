@@ -62,45 +62,45 @@
     </header>
 
     <main class="container py-5">
-    <section id="projects">
-        <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Unity-2D-Platformer</h5>
-                        <p class="card-text flex-grow-1">
-                            A 2D platformer game built with Unity and C#. Features custom physics, level design, and character controls.
-                        </p>
-                        <a href="https://github.com/Gokay1904/Unity-2D-Platformer" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+        <section id="projects">
+            <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Unity-2D-Platformer</h5>
+                            <p class="card-text flex-grow-1">
+                                A 2D platformer game built with Unity and C#. Features custom physics, level design, and character controls.
+                            </p>
+                            <a href="https://github.com/Gokay1904/Unity-2D-Platformer" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Data-Science-Projects</h5>
+                            <p class="card-text flex-grow-1">
+                                A collection of data science projects using Python, Pandas, NumPy, and Scikit-learn. Includes data analysis and machine learning tasks.
+                            </p>
+                            <a href="https://github.com/Gokay1904/Data-Science-Projects" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Game-Jam-Entries</h5>
+                            <p class="card-text flex-grow-1">
+                                Games developed for various game jams, showcasing creativity, teamwork, and rapid prototyping skills.
+                            </p>
+                            <a href="https://github.com/Gokay1904/Game-Jam-Entries" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Data-Science-Projects</h5>
-                        <p class="card-text flex-grow-1">
-                            A collection of data science projects using Python, Pandas, NumPy, and Scikit-learn. Includes data analysis and machine learning tasks.
-                        </p>
-                        <a href="https://github.com/Gokay1904/Data-Science-Projects" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Game-Jam-Entries</h5>
-                        <p class="card-text flex-grow-1">
-                            Games developed for various game jams, showcasing creativity, teamwork, and rapid prototyping skills.
-                        </p>
-                        <a href="https://github.com/Gokay1904/Game-Jam-Entries" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Gökay Akçay | Portfolio</p>
@@ -110,21 +110,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-      // Dynamic background gradient darkness on scroll
-      window.addEventListener('scroll', function() {
-        const scrollY = window.scrollY || window.pageYOffset;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const percent = Math.min(scrollY / docHeight, 1);
-        // Interpolate between two rgba values for gradient stops
-        const start = [30,87,153,0.7];
-        const mid = [41,137,216,0.7];
-        const end = [32,124,202,0.9 + percent * 0.5]; // gets darker as you scroll
-
-        function rgba(arr) { return `rgba(${arr[0]},${arr[1]},${arr[2]},${arr[3]})`; }
-
-        document.body.style.background = `linear-gradient(180deg, ${rgba(start)} 0%, ${rgba(mid)} 50%, ${rgba(end)} 100%)`;
-      });
-    </script>
 </body>
 </html>
