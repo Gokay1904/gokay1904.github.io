@@ -56,7 +56,7 @@
         <div class="social-links mb-3">
             <a href="https://github.com/Gokay1904" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/g%C3%B6kay-ak%C3%A7ay-647522188/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:gokay.akcay19@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="Email" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope"></i></a>
         </div>
         <a href="#projects" class="btn btn-dark btn-lg mt-2">View My Work</a>
     </header>
@@ -105,6 +105,43 @@
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Gökay Akçay | Portfolio</p>
     </footer>
+
+    <!-- Email Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" method="GET" action="mailto:gokay.akcay19@gmail.com" enctype="text/plain">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailModalLabel">Send Email to Gökay Akçay</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" class="form-control" id="email" name="from" required>
+          </div>
+          <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+              <label for="body">Message</label>
+              <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="attachment">Attachment (optional)</label>
+              <input type="file" class="form-control-file" id="attachment" disabled>
+              <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+  </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
