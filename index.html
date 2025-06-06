@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bootstrap Website</title>
+    <title>Gökay Akçay | Portfolio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <style>
@@ -12,49 +12,98 @@
         background: linear-gradient(180deg, rgba(30,87,153,0.7) 0%, rgba(41,137,216,0.7) 50%, rgba(32,124,202,0.9) 100%);
         transition: background 0.5s;
       }
-      .bg-primary, .bg-dark {
-        background-color: rgba(30,87,153,0.85) !important;
-        backdrop-filter: blur(2px);
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+      }
+      .social-links a {
+        margin: 0 10px;
+        color: #222;
+        font-size: 1.5rem;
+        transition: color 0.2s;
+      }
+      .social-links a:hover {
+        color: #007bff;
+        text-decoration: none;
       }
       .card {
         background: rgba(255,255,255,0.85);
         border-radius: 1rem;
         box-shadow: 0 4px 24px rgba(30,87,153,0.08);
       }
+      .bg-dark {
+        background-color: rgba(30,87,153,0.85) !important;
+        backdrop-filter: blur(2px);
+      }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-4">
-        <h1>Welcome to My Bootstrap Website</h1>
+    <header class="bg-white text-center py-5 border-bottom">
+        <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+        <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
+        <p class="lead mx-auto" style="max-width:600px;">
+            I’m a B.E. Applied Physics student with extensive experience in programming and game development.<br>
+            I started coding in Java at 12, later transitioning to C# for game development with Unity. Over the years, I expanded my skills to Python, focusing on data science using libraries like Pandas, NumPy, and Scikit-learn.<br>
+            I enjoy working on both individual projects and team collaborations, particularly in game jams and data-driven tasks. Passionate about continuous learning and problem-solving.
+        </p>
+        <div class="social-links mb-3">
+            <a href="https://github.com/Gokay1904" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/g%C3%B6kay-ak%C3%A7ay-647522188/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:gokay.akcay19@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <a href="#projects" class="btn btn-dark btn-lg mt-2">View My Work</a>
     </header>
 
-    <main class="container mt-4">
-        <!-- Hero Section -->
-        <section class="d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 60vh; background: transparent;">
-          <h1 class="display-3 font-weight-bold mb-3">Your Name</h1>
-          <p class="lead mb-4">Designer & Developer</p>
-          <a href="#projects" class="btn btn-dark btn-lg">View My Work</a>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="container py-5">
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <div class="card border-0 shadow-sm">
-                <img src="assets/project1.jpg" class="card-img-top" alt="Project 1">
-                <div class="card-body">
-                  <h5 class="card-title">Project Title</h5>
-                  <p class="card-text">Short description of your project.</p>
+    <main class="container py-5">
+    <section id="projects">
+        <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Unity-2D-Platformer</h5>
+                        <p class="card-text flex-grow-1">
+                            A 2D platformer game built with Unity and C#. Features custom physics, level design, and character controls.
+                        </p>
+                        <a href="https://github.com/Gokay1904/Unity-2D-Platformer" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <!-- Add more projects as needed -->
-          </div>
-        </section>
-    </main>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Data-Science-Projects</h5>
+                        <p class="card-text flex-grow-1">
+                            A collection of data science projects using Python, Pandas, NumPy, and Scikit-learn. Includes data analysis and machine learning tasks.
+                        </p>
+                        <a href="https://github.com/Gokay1904/Data-Science-Projects" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Game-Jam-Entries</h5>
+                        <p class="card-text flex-grow-1">
+                            Games developed for various game jams, showcasing creativity, teamwork, and rapid prototyping skills.
+                        </p>
+                        <a href="https://github.com/Gokay1904/Game-Jam-Entries" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 My Bootstrap Website</p>
+        <p>&copy; 2025 Gökay Akçay | Portfolio</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
