@@ -17,77 +17,89 @@
         transition: background 0.7s;
       }
       .profile-img {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
         object-fit: cover;
         border-radius: 50%;
         border: 4px solid #fff;
         box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-        margin-bottom: 1rem;
-      }
-      .social-links a {
-        margin: 0 10px;
-        color: #f6f6f6;
-        font-size: 1.6rem;
-        transition: color 0.2s;
-      }
-      .social-links a:hover {
-        color: #b6e0fe;
-        text-decoration: none;
-      }
-      .card, .list-group-item {
-        background: rgba(10,14,30,0.96);
-        border-radius: 1rem;
-        box-shadow: 0 4px 24px rgba(30,87,153,0.08);
-        border: none;
-        color: #f6f6f6;
-      }
-      .bg-dark, .footer, footer {
-        background-color: #050a30 !important;
-        color: #f6f6f6 !important;
-        backdrop-filter: blur(2px);
-      }
-      .sidebar-section {
-        min-height: 100vh;
+        margin-bottom: 1.5rem;
       }
       .main-content {
         margin-left: 220px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        background: transparent;
       }
-      .nav-link {
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        color: #f6f6f6 !important;
-        border-radius: 0.5rem;
-        transition: background 0.2s, color 0.2s;
-      }
-      .nav-link.active, .nav-link:focus {
-        color: #b6e0fe !important;
-        background: rgba(182,224,254,0.08);
-      }
-      h1, h2, h3, h4, h5 {
-        font-family: 'Montserrat', Arial, sans-serif;
-        font-weight: 700;
-        color: #fff;
-      }
-      h2, .section-title {
-        color: #b6e0fe;
+      .container-section {
+        background: rgba(10,14,30,0.98);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(30,87,153,0.12);
+        padding: 3rem 2rem 2.5rem 2rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        max-width: 1100px;
       }
       .section-title {
+        font-size: 2.5rem;
         border-bottom: 2px solid #b6e0fe;
         display: inline-block;
         padding-bottom: 0.3em;
         margin-bottom: 1.5em;
-      }
-      a, a:visited {
         color: #b6e0fe;
-        transition: color 0.2s;
+        font-weight: 700;
       }
-      a:hover {
+      h1.display-4 {
+        font-size: 3.5rem;
+        font-weight: 800;
         color: #fff;
-        text-decoration: underline;
+        letter-spacing: 1px;
+      }
+      h2, h3, h4 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+        color: #b6e0fe;
+      }
+      .skills-group {
+        background: rgba(20,24,40,0.98);
+        border-radius: 1rem;
+        padding: 2rem 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 16px rgba(30,87,153,0.10);
+      }
+      .skills-group h4 {
+        font-size: 1.35rem;
+        color: #b6e0fe;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem 2.5rem;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
+      .skills-list li {
+        font-size: 1.08rem;
+        color: #f6f6f6;
+        background: rgba(32,40,80,0.45);
+        border-radius: 0.5rem;
+        padding: 0.5rem 1.1rem;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .list-group-item {
+        background: transparent !important;
+        color: #f6f6f6;
+        border: none;
+        font-size: 1.08rem;
+      }
+      .lead {
+        font-size: 1.25rem;
+        color: #e3e3e3;
       }
       @media (max-width: 991.98px) {
         .main-content {
@@ -96,42 +108,9 @@
         #sidebarNav {
           display: none !important;
         }
-      }
-      section {
-        margin-bottom: 60px;
-      }
-      .btn-primary {
-        background: #12203a;
-        border: none;
-        color: #f6f6f6;
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(32,191,169,0.08);
-        transition: background 0.2s, color 0.2s;
-      }
-      .btn-primary:hover {
-        background: #22345a;
-        color: #fff;
-      }
-      .modal-content {
-        background: #10162a;
-        color: #f6f6f6;
-        border-radius: 1rem;
-        border: none;
-      }
-      .form-control, .form-control:focus, .form-control-file {
-        background: #050a30;
-        color: #f6f6f6;
-        border: 1px solid #222a3a;
-      }
-      label {
-        color: #f6f6f6;
-      }
-      .list-group-item {
-        background: rgba(10,14,30,0.96) !important;
-        color: #f6f6f6;
-      }
-      .modal-header, .modal-footer {
-        border: none;
+        .container-section {
+          padding: 2rem 0.5rem 1.5rem 0.5rem;
+        }
       }
     </style>
 </head>
@@ -149,155 +128,132 @@
     </nav>
 
     <!-- Main Content Wrapper -->
-    <div class="main-content">
+    <div class="main-content d-flex flex-column align-items-center">
         <!-- About Me Section -->
-        <section id="about" class="container py-5">
-            <header class="text-center border-bottom pb-4 mb-5">
-                <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
-                <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
-                <p class="lead mx-auto" style="max-width:700px;">
-                    Junior Data Scientist<br>
-                    <a href="mailto:gokay.akcay19@gmail.com">gokay.akcay19@gmail.com</a><br>
-                    <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank">LinkedIn</a> &bull; 
-                    <a href="https://github.com/Gokay1904" target="_blank">GitHub</a> &bull; 
-                    <a href="https://www.kaggle.com/gokayakcay" target="_blank">Kaggle</a>
-                </p>
-                <p class="lead mx-auto" style="max-width:700px;">
-                    Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
-                </p>
-            </header>
+        <section id="about" class="container-section text-center">
+            <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+            <h1 class="display-4 font-weight-bold mt-3">Gökay Akçay</h1>
+            <p class="lead mx-auto" style="max-width:700px;">
+                Junior Data Scientist<br>
+                <a href="mailto:gokay.akcay19@gmail.com">gokay.akcay19@gmail.com</a><br>
+                <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank">LinkedIn</a> &bull; 
+                <a href="https://github.com/Gokay1904" target="_blank">GitHub</a> &bull; 
+                <a href="https://www.kaggle.com/gokayakcay" target="_blank">Kaggle</a>
+            </p>
+            <p class="lead mx-auto" style="max-width:700px;">
+                Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
+            </p>
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Education</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-transparent">
-                            <strong>B.S. Physics Engineering</strong> – Istanbul Technical University<br>
-                            GPA: 3.38/4.0 &nbsp; | &nbsp; 2020-2025<br>
-                            ITU English Proficiency Grade: 94/100<br>
-                            Graduation Project: Financial Forecasting with AI Transformer Models (Analyzing Twitter and Stock Correlations) & Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
-                            Focus: Quantum Mechanics, Software, Statistics, Artificial Intelligence & PINNs, Electronics, Optical Design
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <section id="education" class="container-section">
+            <h2 class="section-title">Education</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>B.S. Physics Engineering</strong> – Istanbul Technical University<br>
+                    GPA: 3.38/4.0 &nbsp; | &nbsp; 2020-2025<br>
+                    ITU English Proficiency Grade: 94/100<br>
+                    Graduation Project: Financial Forecasting with AI Transformer Models (Analyzing Twitter and Stock Correlations) & Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
+                    Focus: Quantum Mechanics, Software, Statistics, Artificial Intelligence & PINNs, Electronics, Optical Design
+                </li>
+            </ul>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Skills</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-transparent">
-                            <strong><i class="fas fa-code mr-2"></i>Technical Skills</strong>
-                            <ul>
-                                <li>Python (Numpy, Pandas, Pytorch, Sklearn, Keras, Flask, ZeroMQ)</li>
-                                <li>C#</li>
-                                <li>C++</li>
-                                <li>Java</li>
-                                <li>SQL</li>
-                                <li>Excel</li>
-                                <li>PowerBI</li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item bg-transparent">
-                            <strong><i class="fas fa-users mr-2"></i>Soft Skills</strong>
-                            <ul>
-                                <li>Googling</li>
-                                <li>Prompt Engineering</li>
-                                <li>Adaptability</li>
-                                <li>Time Management</li>
-                                <li>Communication</li>
-                                <li>Creativity & Innovation</li>
-                                <li>Problem Solving</li>
-                                <li>Presentation</li>
-                            </ul>
-                        </li>
-                    </ul>
+        <section id="skills" class="container-section">
+            <h2 class="section-title text-center">Skills</h2>
+            <div class="skills-group">
+                <h4><i class="fas fa-code mr-2"></i>Technical Skills</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h4>Programming Languages</h4>
+                        <ul class="skills-list">
+                            <li>Python (Numpy, Pandas, Pytorch, Sklearn, Keras, Flask, ZeroMQ)</li>
+                            <li>C#</li>
+                            <li>C++</li>
+                            <li>Java</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Tools & Technologies</h4>
+                        <ul class="skills-list">
+                            <li>Excel</li>
+                            <li>PowerBI</li>
+                            <li>Unity Engine</li>
+                            <li>Linux</li>
+                            <li>Git</li>
+                            <li>Docker</li>
+                            <li>Microsoft Azure</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            <div class="skills-group">
+                <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
+                <ul class="skills-list">
+                    <li>Googling</li>
+                    <li>Prompt Engineering</li>
+                    <li>Adaptability</li>
+                    <li>Time Management</li>
+                    <li>Communication</li>
+                    <li>Creativity & Innovation</li>
+                    <li>Problem Solving</li>
+                    <li>Presentation</li>
+                </ul>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Experience</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-transparent">
-                            <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
-                            <em>02/2024 – 07/2024</em>
-                            <ul>
-                                <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
-                                <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
-                                <li>Developed UI and backend architecture using Unity Engine with C#.</li>
-                                <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
-                            </ul>
-                        </li>
+        <section id="experience" class="container-section">
+            <h2 class="section-title">Experience</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
+                    <em>02/2024 – 07/2024</em>
+                    <ul>
+                        <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
+                        <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
+                        <li>Developed UI and backend architecture using Unity Engine with C#.</li>
+                        <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
                     </ul>
-                </div>
-            </div>
+                </li>
+            </ul>
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Certifications</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-transparent">
-                            <strong>IBM</strong> | Machine Learning with Python
-                        </li>
-                        <li class="list-group-item bg-transparent">
-                            <strong>Datacamp</strong> | Data Analyst with Python
-                        </li>
-                        <li class="list-group-item bg-transparent">
-                            <strong>Stanford Online</strong> | Supervised Machine Learning
-                        </li>
-                        <li class="list-group-item bg-transparent">
-                            <strong>HackerRank</strong> | SQL (Intermediate) Certificate
-                        </li>
-                        <li class="list-group-item bg-transparent">
-                            <strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <section id="certifications" class="container-section">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>IBM</strong> | Machine Learning with Python</li>
+                <li class="list-group-item"><strong>Datacamp</strong> | Data Analyst with Python</li>
+                <li class="list-group-item"><strong>Stanford Online</strong> | Supervised Machine Learning</li>
+                <li class="list-group-item"><strong>HackerRank</strong> | SQL (Intermediate) Certificate</li>
+                <li class="list-group-item"><strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect</li>
+            </ul>
         </section>
 
         <!-- Achievements Section -->
-        <section id="achievements" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Achievements</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-transparent">
-                            <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
-                            Coderspace & iyzico | April - May 2024<br>
-                            <ul>
-                                <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
-                                <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
-                            </ul>
-                        </li>
+        <section id="achievements" class="container-section">
+            <h2 class="section-title">Achievements</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
+                    Coderspace & iyzico | April - May 2024<br>
+                    <ul>
+                        <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
+                        <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
                     </ul>
-                </div>
-            </div>
+                </li>
+            </ul>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="container py-5">
-            <h2 class="text-center mb-5 section-title">Get in Touch</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <button class="btn btn-primary btn-lg d-block mx-auto" data-toggle="modal" data-target="#emailModal">
-                        <i class="fas fa-envelope mr-2"></i>Contact Me
-                    </button>
-                </div>
-            </div>
+        <section id="contact" class="container-section text-center">
+            <h2 class="section-title">Get in Touch</h2>
+            <button class="btn btn-primary btn-lg d-block mx-auto" data-toggle="modal" data-target="#emailModal">
+                <i class="fas fa-envelope mr-2"></i>Contact Me
+            </button>
         </section>
 
         <!-- Footer -->
