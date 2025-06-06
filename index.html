@@ -3,84 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bootstrap Website</title>
+    <title>Gokay1904 | Portfolio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+      }
+    </style>
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-4">
-        <h1>Welcome to My Bootstrap Website</h1>
+    <header class="bg-white text-center py-5 border-bottom">
+        <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+        <h1 class="display-4 font-weight-bold mt-3">Gökay</h1>
+        <p class="lead mx-auto" style="max-width:600px;">
+            I’m a B.E. Applied Physics student with extensive experience in programming and game development.<br>
+            I started coding in Java at 12, later transitioning to C# for game development with Unity. Over the years, I expanded my skills to Python, focusing on data science using libraries like Pandas, NumPy, and Scikit-learn.<br>
+            I enjoy working on both individual projects and team collaborations, particularly in game jams and data-driven tasks. Passionate about continuous learning and problem-solving.
+        </p>
+        <a href="https://github.com/Gokay1904" class="btn btn-dark btn-lg mt-2" target="_blank">View my GitHub</a>
     </header>
 
-    <main class="container mt-4">
-        <section>
-            <h2>Aasdgadsgadsgasect</h2>
-            <p>This is a simple website built using Bootstrap to demonstrate responsive design and easy styling.</p>
+    <main class="container py-5">
+        <!-- Hero Section -->
+        <section class="d-flex flex-column justify-content-center align-items-center text-center" style="min-height: 60vh; background: #f8f9fa;">
+          <h1 class="display-3 font-weight-bold mb-3">Your Name</h1>
+          <p class="lead mb-4">Designer & Developer</p>
+          <a href="#projects" class="btn btn-dark btn-lg">View My Work</a>
         </section>
 
-        <section>
-            <h2>My Projects</h2>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="assets/project1.jpg" class="card-img-top" alt="Project 1 Cover">
-                        <div class="card-body">
-                            <h5 class="card-title">Project 1</h5>
-                            <p class="card-text">Short description of Project 1.</p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#project1Details" role="button" aria-expanded="false" aria-controls="project1Details">
-                                More Info
-                            </a>
-                            <div class="collapse mt-2" id="project1Details">
-                                <div class="card card-body">
-                                    Detailed explanation about Project 1 goes here. You can add more text, images, or links as needed.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="assets/project2.jpg" class="card-img-top" alt="Project 2 Cover">
-                        <div class="card-body">
-                            <h5 class="card-title">Project 2</h5>
-                            <p class="card-text">Short description of Project 2.</p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#project2Details" role="button" aria-expanded="false" aria-controls="project2Details">
-                                More Info
-                            </a>
-                            <div class="collapse mt-2" id="project2Details">
-                                <div class="card card-body">
-                                    Detailed explanation about Project 2 goes here.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="assets/project3.jpg" class="card-img-top" alt="Project 3 Cover">
-                        <div class="card-body">
-                            <h5 class="card-title">Project 3</h5>
-                            <p class="card-text">Short description of Project 3.</p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#project3Details" role="button" aria-expanded="false" aria-controls="project3Details">
-                                More Info
-                            </a>
-                            <div class="collapse mt-2" id="project3Details">
-                                <div class="card card-body">
-                                    Detailed explanation about Project 3 goes here.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Projects Section -->
+        <section id="projects" class="container py-5">
+          <h2 class="text-center mb-5 font-weight-bold">Pinned Projects</h2>
+          <div class="row">
+              <!-- Example pinned repo card, repeat for each pinned repo -->
+              <div class="col-md-4 mb-4">
+                  <div class="card border-0 shadow-sm h-100">
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Unity-2D-Platformer</h5>
+                          <p class="card-text flex-grow-1">A 2D platformer game built with Unity and C#. Features custom physics, level design, and character controls.</p>
+                          <a href="https://github.com/Gokay1904/Unity-2D-Platformer" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <div class="card border-0 shadow-sm h-100">
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Data-Science-Projects</h5>
+                          <p class="card-text flex-grow-1">A collection of data science projects using Python, Pandas, NumPy, and Scikit-learn. Includes data analysis and machine learning tasks.</p>
+                          <a href="https://github.com/Gokay1904/Data-Science-Projects" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <div class="card border-0 shadow-sm h-100">
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Game-Jam-Entries</h5>
+                          <p class="card-text flex-grow-1">Games developed for various game jams, showcasing creativity, teamwork, and rapid prototyping skills.</p>
+                          <a href="https://github.com/Gokay1904/Game-Jam-Entries" class="btn btn-outline-dark mt-2" target="_blank">View on GitHub</a>
+                      </div>
+                  </div>
+              </div>
+              <!-- Add more pinned repos as needed -->
+          </div>
         </section>
     </main>
 
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 My Bootstrap Website</p>
+        <p>&copy; 2025 Gökay | Portfolio</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
