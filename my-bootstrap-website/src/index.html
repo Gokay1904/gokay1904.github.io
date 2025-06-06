@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bootstrap Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Welcome to My Bootstrap Website</h1>
+    </header>
+
+    <main class="container mt-4">
+        <section>
+            <h2>About This Project</h2>
+            <p>This is a simple website built using Bootstrap to demonstrate responsive design and easy styling.</p>
+        </section>
+
+        <section>
+            <h2>My Projects</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="assets/project1.jpg" class="card-img-top" alt="Project 1 Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 1</h5>
+                            <p class="card-text">Short description of Project 1.</p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#project1Details" role="button" aria-expanded="false" aria-controls="project1Details">
+                                More Info
+                            </a>
+                            <div class="collapse mt-2" id="project1Details">
+                                <div class="card card-body">
+                                    Detailed explanation about Project 1 goes here. You can add more text, images, or links as needed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="assets/project2.jpg" class="card-img-top" alt="Project 2 Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 2</h5>
+                            <p class="card-text">Short description of Project 2.</p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#project2Details" role="button" aria-expanded="false" aria-controls="project2Details">
+                                More Info
+                            </a>
+                            <div class="collapse mt-2" id="project2Details">
+                                <div class="card card-body">
+                                    Detailed explanation about Project 2 goes here.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="assets/project3.jpg" class="card-img-top" alt="Project 3 Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 3</h5>
+                            <p class="card-text">Short description of Project 3.</p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#project3Details" role="button" aria-expanded="false" aria-controls="project3Details">
+                                More Info
+                            </a>
+                            <div class="collapse mt-2" id="project3Details">
+                                <div class="card card-body">
+                                    Detailed explanation about Project 3 goes here.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 My Bootstrap Website</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
