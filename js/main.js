@@ -65,9 +65,9 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     if (href && href.startsWith('#')) {
+      e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        e.preventDefault();
         window.scrollTo({
           top: target.getBoundingClientRect().top + window.scrollY - 20,
           behavior: 'smooth'

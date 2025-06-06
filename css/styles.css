@@ -22,12 +22,9 @@ h1 {
     letter-spacing: 1px;
 }
 
-h2 {
-    margin: 28px 0 16px 0;
-    font-size: 2.1rem;
-    font-weight: 700;
-    color: #b6e0fe;
-    border-bottom: 2px solid #b6e0fe;
+h2, h3, .edu-title {
+    color: #fff !important;
+    border-bottom: 2px solid #000c66 !important;
     display: inline-block;
     padding-bottom: 0.2em;
 }
@@ -81,7 +78,7 @@ h2 {
 
 .skills-group h4 {
     font-size: 1.35rem;
-    color: #b6e0fe;
+    color: #fff;
     margin-bottom: 1rem;
     font-weight: 700;
 }
@@ -110,4 +107,12 @@ h2 {
     color: #f6f6f6;
     border: none;
     font-size: 1.08rem;
+}
+
+#sidebarNav {
+    background: #020817 !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
