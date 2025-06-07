@@ -36,8 +36,8 @@
         document.addEventListener('DOMContentLoaded', async function() {
             const params = new URLSearchParams(window.location.search);
             const id = params.get('id');
+            // If editing, fetch and fill form
             if (id) {
-                // Fetch blog data
                 const res = await fetch(`/.netlify/functions/get-blog?id=${id}`);
                 if (res.ok) {
                     const blog = await res.json();
@@ -49,12 +49,12 @@
                 }
             }
 
-            // Edit form submission
+            // Form submission (create or update)
             const form = document.getElementById('editBlogForm');
             if (form) {
                 form.onsubmit = async function(e) {
                     e.preventDefault();
-                    if (!localStorage.getItem('isAdmin') === 'true') {
+                    if (localStorage.getItem('isAdmin') !== 'true') {
                         alert('Only admin can edit posts.');
                         return false;
                     }

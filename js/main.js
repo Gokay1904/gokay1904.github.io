@@ -315,3 +315,15 @@ async function confirmDeleteBlog(id) {
         }
     }
 }
+
+function openBlog(id) {
+    window.location.href = `blog-read.html?id=${id}`;
+}
+
+function editBlog(id) {
+    if (!isAdmin()) {
+        alert('Only admin can edit posts.');
+        return;
+    }
+    window.location.href = `blog-edit.html?id=${id}`;
+}
