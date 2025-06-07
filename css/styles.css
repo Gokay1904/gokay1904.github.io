@@ -511,14 +511,7 @@ html {
     margin-right: 0;
     width: auto;
 }
-@media (max-width: 1200px) {
-    #rightBlogBar {
-        display: none !important;
-    }
-    #mainContent {
-        margin-right: 0;
-    }
-}
+
 
 /* Add to your styles.css for better carousel look */
 #blog-carousel {
