@@ -124,7 +124,7 @@ style.innerHTML = `
   color: #b6e0fe;
   border: 1px solid #22345a;
   font-size: 0.95rem;
-  margin-right: 0.4em;
+  margin-right: 0.39em;
   margin-bottom: 0.2em;
   padding: 0.5em 0.9em;
 }
