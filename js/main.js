@@ -179,15 +179,18 @@ function renderBlogs() {
     blogs.forEach((blog, i) => {
         blogList.innerHTML += `
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 blog-card" style="cursor:pointer;" onclick="openBlog(${blog.id})">
+                <div class="card h-100 blog-card position-relative" style="cursor:pointer;">
                     <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">${blog.header}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
                         <p class="card-text">${blog.description}</p>
-                        <button class="btn btn-sm btn-warning" onclick="editBlog(event, ${blog.id})">Edit</button>
-                        <button class="btn btn-sm btn-danger" onclick="deleteBlog(event, ${blog.id})">Delete</button>
+                        <div class="d-flex justify-content-end" style="gap:0.5rem;">
+                            <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(event, ${blog.id})">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
+                        </div>
                     </div>
+                    <div class="stretched-link" onclick="openBlog(${blog.id})" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
                 </div>
             </div>
         `;
@@ -195,6 +198,15 @@ function renderBlogs() {
 }
 window.renderBlogs = renderBlogs;
 renderBlogs();
+
+// Blog silme onaylı
+window.confirmDeleteBlog = function(id) {
+    if (confirm('Are you sure you want to delete this blog post?')) {
+        blogs = blogs.filter(b => b.id !== id);
+        localStorage.setItem('myBlogs', JSON.stringify(blogs));
+        renderBlogs();
+    }
+};
 
 // Blog ekleme/düzenleme
 document.getElementById('addBlogForm').onsubmit = function(e) {
