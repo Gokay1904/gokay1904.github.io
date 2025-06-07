@@ -395,41 +395,35 @@ document.addEventListener('DOMContentLoaded', function() {
   const sidebarNav = document.getElementById('sidebarNav');
   const navbarToggle = document.getElementById('navbarToggle');
 
-  function updateSidebarDirection() {
+  function isPortrait() {
+    return window.matchMedia("(orientation: portrait)").matches;
+  }
+
+  function updateNavbar() {
     if (window.innerWidth <= 900) {
-      if (window.innerWidth > window.innerHeight) {
-        // Yatay mod: üstte yatay navbar
-        sidebarNav.classList.remove('vertical');
+      if (isPortrait()) {
+        // Dikey: navbar kapalı başlasın
+        sidebarNav.style.top = '-60px';
         sidebarNav.style.left = '0';
-        sidebarNav.style.top = '-60px'; // Kapalı başlasın
       } else {
-        // Dikey mod: solda dikey sidebar
-        sidebarNav.classList.add('vertical');
+        // Yatay: navbar açık ve solda
         sidebarNav.style.top = '0';
-        sidebarNav.style.left = '-220px'; // Kapalı başlasın
+        sidebarNav.style.left = '0';
       }
     } else {
-      sidebarNav.classList.remove('vertical');
-      sidebarNav.style.left = '';
       sidebarNav.style.top = '';
+      sidebarNav.style.left = '';
     }
   }
 
-  updateSidebarDirection();
-  window.addEventListener('resize', updateSidebarDirection);
-  window.addEventListener('orientationchange', updateSidebarDirection);
+  updateNavbar();
+  window.addEventListener('resize', updateNavbar);
+  window.addEventListener('orientationchange', updateNavbar);
 
   if (navbarToggle && sidebarNav) {
     navbarToggle.addEventListener('click', function(e) {
-      if (sidebarNav.classList.contains('vertical')) {
-        // Dikey: soldan aç/kapa
-        if (sidebarNav.style.left === '0px') {
-          sidebarNav.style.left = '-220px';
-        } else {
-          sidebarNav.style.left = '0px';
-        }
-      } else {
-        // Yatay: üstten aç/kapa
+      if (isPortrait()) {
+        // Sadece dikeyde hamburger çalışsın
         if (sidebarNav.style.top === '0px') {
           sidebarNav.style.top = '-60px';
         } else {
@@ -439,14 +433,10 @@ document.addEventListener('DOMContentLoaded', function() {
       e.stopPropagation();
     });
 
-    // Menü dışına tıklayınca kapansın
+    // Menü dışına tıklayınca kapansın (sadece dikeyde)
     document.addEventListener('click', function(e) {
-      if (window.innerWidth <= 900 && !sidebarNav.contains(e.target) && e.target !== navbarToggle) {
-        if (sidebarNav.classList.contains('vertical')) {
-          sidebarNav.style.left = '-220px';
-        } else {
-          sidebarNav.style.top = '-60px';
-        }
+      if (window.innerWidth <= 900 && isPortrait() && !sidebarNav.contains(e.target) && e.target !== navbarToggle) {
+        sidebarNav.style.top = '-60px';
       }
     });
   }
