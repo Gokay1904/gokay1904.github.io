@@ -2,7 +2,7 @@ import { neon } from '@neondatabase/serverless';
 
 export async function handler(event, context) {
   try {
-    const sql = neon(process.env.NETLIFY_DATABASE_URL); // uses your Neon DB URL
+    const sql = neon(process.env.NETLIFY_DATABASE_URL);
     const result = await sql`
       SELECT id, header, title, description, image, text, created_at
       FROM posts

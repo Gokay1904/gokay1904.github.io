@@ -1,12 +1,11 @@
 // This file contains custom JavaScript code for the website, which can be used to add interactivity or manipulate the DOM.
 
-// Only use #020817 and lerp to #010510 as you scroll to the bottom (no section loop)
+// --- Background Color Lerp on Scroll ---
 window.addEventListener('scroll', function() {
     const scrollY = window.scrollY || window.pageYOffset;
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const percent = Math.min(scrollY / docHeight, 1);
 
-    // #020817 (2,8,23), #010510 (1,5,16)
     function lerp(a, b, t) { return Math.round(a + (b - a) * t); }
     const r = lerp(2, 1, percent);
     const g = lerp(8, 5, percent);
@@ -16,7 +15,7 @@ window.addEventListener('scroll', function() {
     document.body.style.transition = 'background 0.7s';
 });
 
-// Pinlenen projeleri backend API'dan bir defa çekip, constant olarak JS'e yazmak için örnek:
+// --- Pinned Projects ---
 const pinnedRepos = [
   {
     repo: "PINN-TurbulentFlow-PirateNET",
@@ -44,7 +43,6 @@ const pinnedRepos = [
   }
 ];
 
-// Projeleri HTML'e bastırmak için:
 function renderProjects() {
   const container = document.getElementById('pinned-projects');
   if (!container) return;
@@ -68,7 +66,7 @@ function renderProjects() {
 }
 renderProjects();
 
-// Smooth scroll for sidebar links
+// --- Smooth Scroll for Sidebar Links ---
 document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -76,7 +74,7 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        const offset = 20; // Adjust if you have a fixed header
+        const offset = 20;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({
           top: top,
@@ -87,7 +85,7 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
   });
 });
 
-// Project card pop effect on hover/focus
+// --- Project Card Pop Effect ---
 const style = document.createElement('style');
 style.innerHTML = `
 .project-card {
@@ -130,6 +128,8 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
+
+// --- Skills Flip Card ---
 const techBtn = document.getElementById('showTechnicalBtn');
 const softBtn = document.getElementById('showSoftSkillsBtn');
 const flipContainer = document.getElementById('skillsFlipContainer');
@@ -145,16 +145,18 @@ softBtn?.addEventListener('click', function() {
     techBtn.classList.remove('active', 'btn-skill-active');
 });
 
+// --- Social Icons Active State ---
 document.querySelectorAll('.header-social-icons a.social-icon-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelectorAll('.header-social-icons a.social-icon-link').forEach(l => l.classList.remove('active'));
         this.classList.add('active');
-        setTimeout(() => this.classList.remove('active'), 1500); // Hide after 1.5s
+        setTimeout(() => this.classList.remove('active'), 1500);
         window.open(this.href, '_blank');
     });
 });
 
+// --- Email Link Scroll ---
 document.addEventListener('DOMContentLoaded', function() {
   const emailLink = document.getElementById('email-link');
   if (emailLink) {
@@ -168,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// --- Admin Auth ---
 async function askAdmin() {
     const password = prompt("Enter admin password:");
     if (!password) return;
@@ -184,6 +187,7 @@ async function askAdmin() {
     }
 }
 
+// --- Blog Functions ---
 async function fetchBlogs() {
     const res = await fetch('/.netlify/functions/get-blogs');
     return await res.json();
@@ -197,7 +201,6 @@ async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;
     const blogs = await fetchBlogs();
-    console.log('Fetched blogs:', blogs); // <-- Add this line
     if (!Array.isArray(blogs)) {
         console.error('Error fetching blogs:', blogs);
         blogCarousel.innerHTML = '<div class="text-danger">Failed to load blogs.</div>';
@@ -231,42 +234,34 @@ async function renderBlogs() {
         createBtn.style.display = isAdmin() ? 'inline-block' : 'none';
     }
 }
-
-// Call renderBlogs on page load
 document.addEventListener('DOMContentLoaded', renderBlogs);
 
-// Show/hide create post button
+// --- Create Post Button ---
 function updateCreatePostButton() {
     const btn = document.getElementById('createBlogBtn');
-    if (btn) btn.style.display = localStorage.getItem('isAdmin') === 'true' ? 'inline-block' : 'none';
+    if (btn) btn.style.display = isAdmin() ? 'inline-block' : 'none';
+}
+document.addEventListener('DOMContentLoaded', updateCreatePostButton);
+
+// --- Only admin can open create post page ---
+const createBlogBtn = document.getElementById('createBlogBtn');
+if (createBlogBtn) {
+    createBlogBtn.onclick = function() {
+        if (isAdmin()) {
+            window.location.href = 'blog-edit.html';
+        } else {
+            alert('Only admin can create posts.');
+        }
+    };
 }
 
-// Only admin can open create post page
-document.getElementById('createBlogBtn').onclick = function() {
-    if (localStorage.getItem('isAdmin') === 'true') {
-        window.location.href = 'blog-edit.html';
-    } else {
-        alert('Only admin can create posts.');
-    }
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-    const createBtn = document.getElementById('createBlogBtn');
-    if (createBtn) {
-        if (localStorage.getItem('isAdmin') === 'true') {
-            createBtn.style.display = 'inline-block';
-        } else {
-            createBtn.style.display = 'none';
-        }
-    }
-});
-
+// --- Blog Edit Form Submission ---
 document.addEventListener('DOMContentLoaded', function() {
     const editForm = document.getElementById('editBlogForm');
     if (editForm) {
         editForm.onsubmit = async function(e) {
             e.preventDefault();
-            if (localStorage.getItem('isAdmin') !== 'true') {
+            if (!isAdmin()) {
                 alert('Only admin can create posts.');
                 return false;
             }
@@ -284,7 +279,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(blog)
             });
 
-            const data = await res.json();
+            let data;
+            try {
+                data = await res.json();
+            } catch (e) {
+                alert('Server error: Could not parse response.');
+                return;
+            }
             if (data.success) {
                 alert('Blog post created!');
                 window.location.href = 'index.html#blogs';
