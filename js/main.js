@@ -395,18 +395,58 @@ document.addEventListener('DOMContentLoaded', function() {
   const sidebarNav = document.getElementById('sidebarNav');
   const navbarToggle = document.getElementById('navbarToggle');
 
-  if (navbarToggle && sidebarNav) {
-    navbarToggle.addEventListener('click', function() {
-      if (sidebarNav.style.top === '0px' || sidebarNav.style.top === '') {
-        sidebarNav.style.top = '-60px';
+  function updateSidebarDirection() {
+    if (window.innerWidth <= 900) {
+      if (window.matchMedia("(orientation: landscape)").matches) {
+        // Yatay mod: soldan açılan sidebar
+        sidebarNav.classList.add('vertical');
+        sidebarNav.style.top = '0';
+        sidebarNav.style.left = '-220px';
       } else {
-        sidebarNav.style.top = '0px';
+        // Dikey mod: üstten açılan navbar
+        sidebarNav.classList.remove('vertical');
+        sidebarNav.style.left = '0';
+        sidebarNav.style.top = '-60px';
       }
+    } else {
+      sidebarNav.classList.remove('vertical');
+      sidebarNav.style.left = '';
+      sidebarNav.style.top = '';
+    }
+  }
+
+  updateSidebarDirection();
+  window.addEventListener('resize', updateSidebarDirection);
+  window.addEventListener('orientationchange', updateSidebarDirection);
+
+  if (navbarToggle && sidebarNav) {
+    navbarToggle.addEventListener('click', function(e) {
+      if (sidebarNav.classList.contains('vertical')) {
+        // Yatay: soldan aç/kapat
+        if (sidebarNav.style.left === '0px') {
+          sidebarNav.style.left = '-220px';
+        } else {
+          sidebarNav.style.left = '0px';
+        }
+      } else {
+        // Dikey: üstten aç/kapat
+        if (sidebarNav.style.top === '0px') {
+          sidebarNav.style.top = '-60px';
+        } else {
+          sidebarNav.style.top = '0px';
+        }
+      }
+      e.stopPropagation();
     });
-    // Menü dışına tıklayınca kapansın isterseniz:
+
+    // Menü dışına tıklayınca kapansın
     document.addEventListener('click', function(e) {
       if (window.innerWidth <= 900 && !sidebarNav.contains(e.target) && e.target !== navbarToggle) {
-        sidebarNav.style.top = '-60px';
+        if (sidebarNav.classList.contains('vertical')) {
+          sidebarNav.style.left = '-220px';
+        } else {
+          sidebarNav.style.top = '-60px';
+        }
       }
     });
   }
