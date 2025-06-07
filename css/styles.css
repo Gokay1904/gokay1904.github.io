@@ -667,14 +667,7 @@ html {
 @media (max-width: 900px) {
   .section,
   .about-container,
-  .header-about-text,
-  .education-container,
-  .experience-container,
-  .skills-flip-container,
-  .skills-flip-front,
-  .skills-flip-back,
-  .card,
-  .footer {
+  .header-about-text {
     max-width: 100vw !important;
     width: 100vw !important;
     margin: 0 !important;
@@ -683,6 +676,15 @@ html {
     box-sizing: border-box !important;
     text-align: left !important;
   }
+  .section h2, .section h3, .edu-title {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.2em !important;
+    border-bottom: 2px solid #000c66 !important;
+    display: block !important;
+  }
   .row, .col-md-6, .col-md-7, .col-md-5 {
     margin: 0 !important;
     padding: 0 !important;
@@ -690,20 +692,18 @@ html {
     max-width: 100vw !important;
     box-sizing: border-box !important;
   }
-  .lead, .header-about-text, .about-container {
+  .about-container, .header-about-text {
     text-align: left !important;
-    word-break: normal !important;
-    white-space: normal !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
-  .profile-img {
-    margin-left: auto !important;
-    margin-right: auto !important;
+  .row {
     display: block !important;
   }
-  .btn, .btn-block {
+  .col-md-6, .col-md-7, .col-md-5 {
     width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100vw !important;
+    display: block !important;
+    margin-bottom: 1.2rem !important;
   }
 }
 body, html {
