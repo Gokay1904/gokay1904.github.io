@@ -209,7 +209,7 @@ async function renderBlogs() {
     blogs.forEach(blog => {
         blogCarousel.innerHTML += `
             <div class="col-md-4 mb-4" style="min-width:340px;max-width:340px;">
-                <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
+                <div class="card h-100 blog-post-card position-relative p-0" style="overflow:hidden;">
                     ${isAdmin() ? `
                     <div class="d-flex justify-content-end align-items-start p-2" style="position:absolute;top:0;right:0;z-index:2;gap:0.5rem;">
                         <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
