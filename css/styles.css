@@ -634,21 +634,10 @@ html {
   .header-about-text {
     max-width: 100vw !important;
     width: 100vw !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    margin: 0 !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
     box-sizing: border-box !important;
-    text-align: left !important;
-  }
-  .header-about-text,
-  .about-container,
-  .section {
-    word-break: normal !important;
-    white-space: normal !important;
-  }
-  h2, h3, .edu-title {
-    font-size: 1.3rem !important;
     text-align: left !important;
   }
 }
@@ -672,4 +661,62 @@ html {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+}
+
+/* Mobilde ve küçük ekranlarda section ve about tamamen ekrana otursun */
+@media (max-width: 900px) {
+  .section,
+  .about-container,
+  .header-about-text,
+  .education-container,
+  .experience-container,
+  .skills-flip-container,
+  .skills-flip-front,
+  .skills-flip-back,
+  .card,
+  .footer {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+  .row, .col-md-6, .col-md-7, .col-md-5 {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  .lead, .header-about-text, .about-container {
+    text-align: left !important;
+    word-break: normal !important;
+    white-space: normal !important;
+  }
+  .profile-img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+  .btn, .btn-block {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+  }
+}
+body, html {
+  width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Eğer .container varsa, onun da genişliğini düzelt */
+.container {
+  max-width: 100vw !important;
+  width: 100vw !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
 }
