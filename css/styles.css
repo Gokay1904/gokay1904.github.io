@@ -405,7 +405,7 @@ html {
 .contact-info-inner {
     position: sticky;
     top: 1.5rem;
-    z-index: 2;
+    z-index: 1.98;
     padding-bottom: 1rem;
     background: #071022;
 }
