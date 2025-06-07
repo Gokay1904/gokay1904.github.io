@@ -2,7 +2,7 @@ import { neon } from '@netlify/neon';
 
 export async function handler(event, context) {
   try {
-    const sql = neon(); // uses process.env.NETLIFY_DATABASE_URL
+    const sql = neon(process.env.NETLIFY_DATABASE_URL); // uses process.env.NETLIFY_DATABASE_URL
     const result = await sql`
       SELECT id, header, title, description, image, text, created_at
       FROM posts
