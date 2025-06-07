@@ -168,72 +168,85 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-const blogs = [
-  {
-    id: 1,
-    image: "assets/blog1.jpg",
-    header: "Data Science Journey",
-    title: "How I Started in Data Science",
-    description: "A brief story about my first steps into data science.",
-    text: "Full blog post content goes here. You can add as much text as you want.",
-  },
-  {
-    id: 2,
-    image: "assets/blog2.jpg",
-    header: "Machine Learning Tips",
-    title: "Top 5 Tips for Beginners",
-    description: "Essential tips for anyone starting with machine learning.",
-    text: "Full blog post content goes here. You can add as much text as you want.",
-  }
-  // Add more blogs as needed
-];
+// Blogları localStorage'dan oku veya boş dizi oluştur
+let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
 
+// Blogları göster
 function renderBlogs() {
-  const blogList = document.getElementById('blog-list');
-  if (!blogList) return;
-  blogList.innerHTML = '';
-  blogs.forEach(blog => {
-    blogList.innerHTML += `
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 blog-card" style="cursor:pointer;" onclick="openBlog(${blog.id})">
-          <img src="${blog.image}" class="card-img-top" alt="${blog.header}">
-          <div class="card-body">
-            <h5 class="card-title">${blog.header}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
-            <p class="card-text">${blog.description}</p>
-          </div>
-        </div>
-      </div>
-    `;
-  });
+    const blogList = document.getElementById('blog-list');
+    if (!blogList) return;
+    blogList.innerHTML = '';
+    blogs.forEach((blog, i) => {
+        blogList.innerHTML += `
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 blog-card" style="cursor:pointer;" onclick="openBlog(${blog.id})">
+                    <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">${blog.header}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
+                        <p class="card-text">${blog.description}</p>
+                        <button class="btn btn-sm btn-warning" onclick="editBlog(event, ${blog.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteBlog(event, ${blog.id})">Delete</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
 }
-window.renderBlogs = renderBlogs; // Make it available globally
+window.renderBlogs = renderBlogs;
 renderBlogs();
 
-function renderRightBlogs() {
-  const rightBlogList = document.getElementById('right-blog-list');
-  if (!rightBlogList) return;
-  const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-  rightBlogList.innerHTML = '';
-  blogs.forEach(blog => {
-    rightBlogList.innerHTML += `
-      <div class="card mb-3 blog-card-mini" style="cursor:pointer;" onclick="openBlog(${blog.id})">
-        <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:110px;object-fit:cover;">
-        <div class="card-body p-2">
-          <div class="font-weight-bold" style="font-size:1.05rem;color:#fff;">${blog.header}</div>
-          <div class="text-muted" style="font-size:0.97rem;">${blog.title}</div>
-          <div style="font-size:0.93rem;color:#b6bfc9;">${blog.description}</div>
-        </div>
-      </div>
-    `;
-  });
-}
-window.renderRightBlogs = renderRightBlogs;
-renderRightBlogs();
+// Blog ekleme/düzenleme
+document.getElementById('addBlogForm').onsubmit = function(e) {
+    e.preventDefault();
+    const id = document.getElementById('blogId').value || Date.now();
+    const blog = {
+        id: Number(id),
+        header: document.getElementById('blogHeader').value,
+        title: document.getElementById('blogTitle').value,
+        description: document.getElementById('blogDesc').value,
+        image: document.getElementById('blogImage').value,
+        text: document.getElementById('blogText').value
+    };
+    const idx = blogs.findIndex(b => b.id === Number(id));
+    if (idx > -1) blogs[idx] = blog;
+    else blogs.push(blog);
+    localStorage.setItem('myBlogs', JSON.stringify(blogs));
+    this.reset();
+    document.getElementById('cancelEdit').style.display = 'none';
+    renderBlogs();
+};
 
-// Blog open logic
+// Blog düzenleme
+window.editBlog = function(e, id) {
+    e.stopPropagation();
+    const blog = blogs.find(b => b.id === id);
+    if (!blog) return;
+    document.getElementById('blogId').value = blog.id;
+    document.getElementById('blogHeader').value = blog.header;
+    document.getElementById('blogTitle').value = blog.title;
+    document.getElementById('blogDesc').value = blog.description;
+    document.getElementById('blogImage').value = blog.image;
+    document.getElementById('blogText').value = blog.text;
+    document.getElementById('cancelEdit').style.display = 'inline-block';
+};
+
+// Blog silme
+window.deleteBlog = function(e, id) {
+    e.stopPropagation();
+    blogs = blogs.filter(b => b.id !== id);
+    localStorage.setItem('myBlogs', JSON.stringify(blogs));
+    renderBlogs();
+};
+
+// Edit iptal
+document.getElementById('cancelEdit').onclick = function() {
+    document.getElementById('addBlogForm').reset();
+    this.style.display = 'none';
+};
+
+// Blog detayına git
 window.openBlog = function(id) {
-  const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-  localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
-  window.location.href = 'blog.html';
+    localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
+    window.location.href = 'blog.html';
 };

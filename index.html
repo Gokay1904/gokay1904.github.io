@@ -301,8 +301,8 @@
             </div>
         </section>
 
-        <!-- Sadece siz göreceksiniz, örnek için display:none kaldırıp test edin -->
-        <div id="blog-admin-form" style="display:none; margin-bottom:2rem;">
+        <!-- Blog Admin Form (only you can see, keep as is) -->
+        <div id="blog-admin-form" style="margin-bottom:2rem;">
             <h4>Add/Edit Blog Post</h4>
             <form id="addBlogForm">
                 <input type="hidden" id="blogId">
@@ -330,6 +330,14 @@
                 <button type="button" class="btn btn-secondary" id="cancelEdit" style="display:none;">Cancel</button>
             </form>
         </div>
+
+        <!-- Blogs Section (add this just above the Get in Touch section) -->
+        <section class="section" id="blogs">
+            <h2>My Blogs</h2>
+            <div class="row" id="blog-list">
+                <!-- Blog cards will be rendered here by JS -->
+            </div>
+        </section>
 
         <footer class="footer">
             &copy; 2025 Gökay Akçay | Portfolio
