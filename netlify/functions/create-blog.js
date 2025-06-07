@@ -1,14 +1,20 @@
 import { neon } from '@netlify/neon';
 
-export default async (request) => {
+export async function handler(event, context) {
   console.log('create-blog function invoked'); // Add this line
-  if (request.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: 'Method Not Allowed',
+    };
   }
   try {
-    const { header, title, description, image, text } = await request.json();
+    const { header, title, description, image, text } = JSON.parse(event.body);
     if (!header || !title || !description || !image || !text) {
-      return new Response('Missing fields', { status: 400 });
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Missing fields' }),
+      };
     }
     const sql = neon(); // uses NETLIFY_DATABASE_URL
     const result = await sql`
@@ -16,9 +22,36 @@ export default async (request) => {
       VALUES (${header}, ${title}, ${description}, ${image}, ${text}, NOW())
       RETURNING id
     `;
-    return Response.json({ success: true, id: result[0].id });
-  } catch (err) {
-    console.error('Create blog error:', err); // For debugging
-    return Response.json({ error: err.message }, { status: 500 });
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true, id: result[0].id }),
+    };
+  } catch (error) {
+    console.error('Create blog error:', error); // For debugging
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
   }
-};
+}
+
+export async function handler(event, context) {
+  try {
+    const sql = neon();
+    const rows = await sql`
+      SELECT id, header, title, description, image, text, created_at
+      FROM posts
+      ORDER BY created_at DESC
+    `;
+    return {
+      statusCode: 200,
+      body: JSON.stringify(rows),
+    };
+  } catch (error) {
+    console.error('get-blogs error:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
+  }
+}
