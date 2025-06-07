@@ -2,16 +2,16 @@ import { neon } from '@netlify/neon';
 
 export default async () => {
   try {
-    const sql = neon();
+    const sql = neon(); // This uses process.env.NETLIFY_DATABASE_URL
     const result = await sql`
       SELECT id, header, title, description, image, text, created_at
       FROM posts
       ORDER BY created_at DESC
     `;
-    return Response.json(result); // result should be an array
+    return Response.json(result);
   } catch (err) {
     console.error('get-blogs error:', err);
-    return Response.json([], { status: 500 }); // Return an empty array on error
+    return Response.json([], { status: 500 });
   }
 };
 
