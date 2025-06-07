@@ -180,18 +180,19 @@ function renderBlogs() {
     blogs.forEach(blog => {
         blogList.innerHTML += `
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 blog-card position-relative" style="cursor:pointer;">
-                    <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">${blog.header}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
-                        <p class="card-text">${blog.description}</p>
-                        <div class="d-flex justify-content-end" style="gap:0.5rem;">
-                            <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
-                            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
+                <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
+                    <div class="d-flex justify-content-end align-items-start p-2" style="position:absolute;top:0;right:0;z-index:2;gap:0.5rem;">
+                        <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
+                    </div>
+                    <div onclick="openBlog(${blog.id})" style="cursor:pointer;">
+                        <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">${blog.header}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
+                            <p class="card-text">${blog.description}</p>
                         </div>
                     </div>
-                    <div class="stretched-link" onclick="openBlog(${blog.id})" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
                 </div>
             </div>
         `;

@@ -333,6 +333,9 @@ html {
     #skills .row {
         flex-direction: column;
     }
+    #mainContent {
+        margin-left: 0;
+    }
 }
 
 /* Make the skills container keep the max height of both sides and push content below */
@@ -445,7 +448,9 @@ html {
     box-shadow: 0 4px 18px rgba(2,8,23,0.18);
 }
 #mainContent {
-    margin-right: 320px;
+    margin-left: 220px; /* Sadece sidebar genişliği kadar */
+    margin-right: 0;
+    width: auto;
 }
 @media (max-width: 1200px) {
     #rightBlogBar {
