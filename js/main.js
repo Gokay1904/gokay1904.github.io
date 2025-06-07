@@ -327,3 +327,66 @@ function editBlog(id) {
     }
     window.location.href = `blog-edit.html?id=${id}`;
 }
+
+document.addEventListener('DOMContentLoaded', async function() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    // If editing, fetch and fill form
+    if (id) {
+        const res = await fetch(`/.netlify/functions/get-blog?id=${id}`);
+        if (res.ok) {
+            const blog = await res.json();
+            if (blog && blog.id) {
+                document.getElementById('blogHeader').value = blog.header || '';
+                document.getElementById('blogTitle').value = blog.title || '';
+                document.getElementById('blogDesc').value = blog.description || '';
+                document.getElementById('blogImage').value = blog.image || '';
+                document.getElementById('blogText').value = blog.text || '';
+            } else {
+                alert('Blog post not found!');
+                window.location.href = 'index.html#blogs';
+            }
+        } else {
+            alert('Error fetching blog post!');
+            window.location.href = 'index.html#blogs';
+        }
+    }
+
+    // Form submission (create or update)
+    const form = document.getElementById('editBlogForm');
+    if (form) {
+        form.onsubmit = async function(e) {
+            e.preventDefault();
+            if (!isAdmin()) {
+                alert('Only admin can edit posts.');
+                return false;
+            }
+            const blog = {
+                id, // include id for update
+                header: document.getElementById('blogHeader').value,
+                title: document.getElementById('blogTitle').value,
+                description: document.getElementById('blogDesc').value,
+                image: document.getElementById('blogImage').value,
+                text: document.getElementById('blogText').value
+            };
+            const res = await fetch('/.netlify/functions/create-blog', {
+                method: id ? 'PUT' : 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(blog)
+            });
+            let data;
+            try {
+                data = await res.json();
+            } catch (e) {
+                alert('Server error: Could not parse response.');
+                return;
+            }
+            if (data.success) {
+                alert('Blog post saved!');
+                window.location.href = 'index.html#blogs';
+            } else {
+                alert('Error: ' + (data.error || 'Unknown error'));
+            }
+        };
+    }
+});
