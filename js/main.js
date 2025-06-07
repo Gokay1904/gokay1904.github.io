@@ -422,16 +422,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (navbarToggle && sidebarNav) {
     navbarToggle.addEventListener('click', function(e) {
-      if (isPortrait()) {
-        // Sadece dikeyde hamburger çalışsın
-        if (sidebarNav.style.top === '0px') {
-          sidebarNav.style.top = '-60px';
-        } else {
-          sidebarNav.style.top = '0px';
-        }
-      }
-      e.stopPropagation();
-    });
+  if (isPortrait()) {
+    if (sidebarNav.style.top === '0px') {
+      sidebarNav.style.top = '-60px';
+    } else {
+      sidebarNav.style.top = '0px';
+    }
+  }
+  e.stopPropagation();
+});
 
     // Menü dışına tıklayınca kapansın (sadece dikeyde)
     document.addEventListener('click', function(e) {

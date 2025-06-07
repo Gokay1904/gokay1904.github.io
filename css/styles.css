@@ -615,6 +615,14 @@ html {
 
 /* styles.css dosyanın sonuna ekle */
 @media (max-width: 900px) {
+  #sidebarNav {
+    z-index: 2000 !important;
+    /* ...diğer kurallar... */
+  }
+  header, body, html {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
   /* Ortak navbar stilleri */
   #sidebarNav {
     position: fixed !important;
@@ -689,5 +697,10 @@ html {
 @media (min-width: 901px) {
   #navbarToggle {
     display: none !important;
+  }
+}
+@media (max-width: 900px) and (orientation: portrait) {
+  #navbarToggle {
+    display: block !important;
   }
 }
