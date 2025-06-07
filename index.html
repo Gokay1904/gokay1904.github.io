@@ -293,39 +293,13 @@
             </div>
         </section>
 
-        <!-- Blog Admin Form (only you can see, keep as is) -->
-        <div id="blog-admin-form" style="margin-bottom:2rem;">
-            <h4>Add/Edit Blog Post</h4>
-            <form id="addBlogForm">
-                <input type="hidden" id="blogId">
-                <div class="form-group">
-                    <label>Header</label>
-                    <input type="text" class="form-control" id="blogHeader" required>
-                </div>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" id="blogTitle" required>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <input type="text" class="form-control" id="blogDesc" required>
-                </div>
-                <div class="form-group">
-                    <label>Image URL</label>
-                    <input type="text" class="form-control" id="blogImage" required>
-                </div>
-                <div class="form-group">
-                    <label>Text</label>
-                    <textarea class="form-control" id="blogText" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Save Blog</button>
-                <button type="button" class="btn btn-secondary" id="cancelEdit" style="display:none;">Cancel</button>
-            </form>
-        </div>
-
+ 
         <!-- Blogs Section (add this just above the Get in Touch section) -->
         <section class="section" id="blogs">
-            <h2>My Blogs</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>My Blogs</h2>
+                <button id="createBlogBtn" class="btn btn-success">+ Create Post</button>
+            </div>
             <div class="row" id="blog-list">
                 <!-- Blog cards will be rendered here by JS -->
             </div>

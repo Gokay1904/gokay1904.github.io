@@ -168,15 +168,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Blogları localStorage'dan oku veya boş dizi oluştur
-let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
+document.getElementById('createBlogBtn').onclick = function() {
+    window.location.href = 'blog-edit.html';
+};
 
-// Blogları göster
 function renderBlogs() {
     const blogList = document.getElementById('blog-list');
     if (!blogList) return;
+    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
     blogList.innerHTML = '';
-    blogs.forEach((blog, i) => {
+    blogs.forEach(blog => {
         blogList.innerHTML += `
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100 blog-card position-relative" style="cursor:pointer;">
@@ -186,7 +187,7 @@ function renderBlogs() {
                         <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
                         <p class="card-text">${blog.description}</p>
                         <div class="d-flex justify-content-end" style="gap:0.5rem;">
-                            <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(event, ${blog.id})">Edit</button>
+                            <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
                             <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
                         </div>
                     </div>
@@ -199,66 +200,21 @@ function renderBlogs() {
 window.renderBlogs = renderBlogs;
 renderBlogs();
 
-// Blog silme onaylı
+window.editBlog = function(id) {
+    window.location.href = `blog-edit.html?id=${id}`;
+};
+
 window.confirmDeleteBlog = function(id) {
     if (confirm('Are you sure you want to delete this blog post?')) {
+        let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
         blogs = blogs.filter(b => b.id !== id);
         localStorage.setItem('myBlogs', JSON.stringify(blogs));
         renderBlogs();
     }
 };
 
-// Blog ekleme/düzenleme
-document.getElementById('addBlogForm').onsubmit = function(e) {
-    e.preventDefault();
-    const id = document.getElementById('blogId').value || Date.now();
-    const blog = {
-        id: Number(id),
-        header: document.getElementById('blogHeader').value,
-        title: document.getElementById('blogTitle').value,
-        description: document.getElementById('blogDesc').value,
-        image: document.getElementById('blogImage').value,
-        text: document.getElementById('blogText').value
-    };
-    const idx = blogs.findIndex(b => b.id === Number(id));
-    if (idx > -1) blogs[idx] = blog;
-    else blogs.push(blog);
-    localStorage.setItem('myBlogs', JSON.stringify(blogs));
-    this.reset();
-    document.getElementById('cancelEdit').style.display = 'none';
-    renderBlogs();
-};
-
-// Blog düzenleme
-window.editBlog = function(e, id) {
-    e.stopPropagation();
-    const blog = blogs.find(b => b.id === id);
-    if (!blog) return;
-    document.getElementById('blogId').value = blog.id;
-    document.getElementById('blogHeader').value = blog.header;
-    document.getElementById('blogTitle').value = blog.title;
-    document.getElementById('blogDesc').value = blog.description;
-    document.getElementById('blogImage').value = blog.image;
-    document.getElementById('blogText').value = blog.text;
-    document.getElementById('cancelEdit').style.display = 'inline-block';
-};
-
-// Blog silme
-window.deleteBlog = function(e, id) {
-    e.stopPropagation();
-    blogs = blogs.filter(b => b.id !== id);
-    localStorage.setItem('myBlogs', JSON.stringify(blogs));
-    renderBlogs();
-};
-
-// Edit iptal
-document.getElementById('cancelEdit').onclick = function() {
-    document.getElementById('addBlogForm').reset();
-    this.style.display = 'none';
-};
-
-// Blog detayına git
 window.openBlog = function(id) {
+    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
     localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
     window.location.href = 'blog.html';
 };
