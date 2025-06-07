@@ -210,3 +210,65 @@ html {
 .skills-flip-back {
     transform: rotateY(180deg);
 }
+
+/* Make skills card and columns responsive and prevent overflow */
+#skills .skills-flip-container,
+#skills .skills-flip-inner,
+#skills .skills-flip-front,
+#skills .skills-flip-back,
+#skills .card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+#skills .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    overflow: visible;
+}
+
+#skills .row {
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#skills .col-md-3 {
+    min-width: 220px;
+    flex: 1 1 220px;
+    max-width: 100%;
+    word-break: break-word;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#skills .skills-list {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    word-break: break-word;
+}
+
+#skills .skills-group h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    white-space: normal;
+    word-break: break-word;
+}
+
+@media (max-width: 991px) {
+    #skills .col-md-3 {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+    #skills .row {
+        flex-direction: column;
+    }
+}
