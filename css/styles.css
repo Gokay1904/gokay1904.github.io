@@ -119,11 +119,12 @@ h2, h3, .edu-title {
 }
 
 #sidebarNav {
-    min-width: 220px;
-    width: max-content;
-    max-width: none;
+    min-width: 250px;
+    width: 260px;
+    max-width: 100vw;
     word-break: normal;
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 #sidebarNav h3 {
@@ -135,7 +136,7 @@ h2, h3, .edu-title {
 #sidebarNav .nav-link {
     display: flex;
     align-items: center;
-    gap: 0.7em;
+    gap: 0.5em; /* slightly reduce gap for more space */
     color: #f6f6f6 !important;
     border-radius: 0.5rem;
     transition: background 0.18s, color 0.18s;
