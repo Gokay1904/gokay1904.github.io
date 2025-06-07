@@ -33,51 +33,58 @@
             return localStorage.getItem('isAdmin') === 'true';
         }
 
-        document.getElementById('editBlogForm').onsubmit = async function(e) {
-            e.preventDefault();
-            if (!isAdmin()) {
-                alert('Only admin can create posts.');
-                return false;
-            }
-            const blog = {
-                header: document.getElementById('blogHeader').value,
-                title: document.getElementById('blogTitle').value,
-                description: document.getElementById('blogDesc').value,
-                image: document.getElementById('blogImage').value,
-                text: document.getElementById('blogText').value
-            };
-
-            const res = await fetch('/.netlify/functions/create-blog', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(blog)
-            });
-            let data;
-            try {
-                data = await res.json();
-            } catch (e) {
-                alert('Server error: Could not parse response.');
-                return;
-            }
-            if (data.success) {
-                alert('Blog post created!');
-                window.location.href = 'index.html#blogs';
-            } else {
-                alert('Error: ' + (data.error || 'Unknown error'));
-            }
-        };
-
         document.addEventListener('DOMContentLoaded', async function() {
             const params = new URLSearchParams(window.location.search);
             const id = params.get('id');
             if (id) {
+                // Fetch blog data
                 const res = await fetch(`/.netlify/functions/get-blog?id=${id}`);
-                const blog = await res.json();
-                document.getElementById('blogHeader').value = blog.header;
-                document.getElementById('blogTitle').value = blog.title;
-                document.getElementById('blogDesc').value = blog.description;
-                document.getElementById('blogImage').value = blog.image;
-                document.getElementById('blogText').value = blog.text;
+                if (res.ok) {
+                    const blog = await res.json();
+                    document.getElementById('blogHeader').value = blog.header;
+                    document.getElementById('blogTitle').value = blog.title;
+                    document.getElementById('blogDesc').value = blog.description;
+                    document.getElementById('blogImage').value = blog.image;
+                    document.getElementById('blogText').value = blog.text;
+                }
+            }
+
+            // Edit form submission
+            const form = document.getElementById('editBlogForm');
+            if (form) {
+                form.onsubmit = async function(e) {
+                    e.preventDefault();
+                    if (!localStorage.getItem('isAdmin') === 'true') {
+                        alert('Only admin can edit posts.');
+                        return false;
+                    }
+                    const blog = {
+                        id, // include id for update
+                        header: document.getElementById('blogHeader').value,
+                        title: document.getElementById('blogTitle').value,
+                        description: document.getElementById('blogDesc').value,
+                        image: document.getElementById('blogImage').value,
+                        text: document.getElementById('blogText').value
+                    };
+                    const res = await fetch('/.netlify/functions/create-blog', {
+                        method: id ? 'PUT' : 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(blog)
+                    });
+                    let data;
+                    try {
+                        data = await res.json();
+                    } catch (e) {
+                        alert('Server error: Could not parse response.');
+                        return;
+                    }
+                    if (data.success) {
+                        alert('Blog post saved!');
+                        window.location.href = 'index.html#blogs';
+                    } else {
+                        alert('Error: ' + (data.error || 'Unknown error'));
+                    }
+                };
             }
         });
     </script>
