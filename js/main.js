@@ -35,23 +35,19 @@ const pinnedRepos = [
   }
 ];
 
-// pinned-projects alanına kartları ekle
-// Render project cards
+// Fetch pinned repositories from GitHub using the alternative gh-pinned-repos API
 async function fetchPinnedRepos(username) {
-  // This uses the public GitHub API for user repos (no "pinned" endpoint, so we fetch all and pick top N by stars)
-  const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+  // Uses https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/ as a public proxy for pinned repos
+  const response = await fetch(`https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=${username}`);
   if (!response.ok) return [];
   const repos = await response.json();
-  // Sort by stargazers_count and take top 2 (or more if you want)
-  return repos
-    .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .slice(0, 2)
-    .map(repo => ({
-      repo: repo.name,
-      link: repo.html_url,
-      description: repo.description || '',
-      tech: [] // Tech stack not available from API directly
-    }));
+  // Each repo has: repo, link, description, language, languageColor, stars, forks
+  return repos.map(repo => ({
+    repo: repo.repo,
+    link: repo.link,
+    description: repo.description || '',
+    tech: repo.language ? [repo.language] : []
+  }));
 }
 
 async function renderProjects() {
