@@ -390,3 +390,24 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebarNav = document.getElementById('sidebarNav');
+  const navbarToggle = document.getElementById('navbarToggle');
+
+  if (navbarToggle && sidebarNav) {
+    navbarToggle.addEventListener('click', function() {
+      if (sidebarNav.style.top === '0px' || sidebarNav.style.top === '') {
+        sidebarNav.style.top = '-60px';
+      } else {
+        sidebarNav.style.top = '0px';
+      }
+    });
+    // Menü dışına tıklayınca kapansın isterseniz:
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 900 && !sidebarNav.contains(e.target) && e.target !== navbarToggle) {
+        sidebarNav.style.top = '-60px';
+      }
+    });
+  }
+});
