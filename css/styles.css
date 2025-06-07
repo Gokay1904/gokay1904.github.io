@@ -398,3 +398,14 @@ html {
     background-color: #000c66 !important;
     border-color: #000c66 !important;
 }
+
+.contact-info-sticky {
+    position: relative;
+}
+.contact-info-inner {
+    position: sticky;
+    top: 1.5rem;
+    z-index: 2;
+    padding-bottom: 1rem;
+    background: #071022;
+}
