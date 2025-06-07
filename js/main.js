@@ -236,5 +236,13 @@ document.getElementById('createBlogBtn').onclick = function() {
     }
 };
 
-// Call this after login and on page load
-updateCreatePostButton();
+document.addEventListener('DOMContentLoaded', function() {
+    const createBtn = document.getElementById('createBlogBtn');
+    if (createBtn) {
+        if (localStorage.getItem('isAdmin') === 'true') {
+            createBtn.style.display = 'inline-block';
+        } else {
+            createBtn.style.display = 'none';
+        }
+    }
+});
