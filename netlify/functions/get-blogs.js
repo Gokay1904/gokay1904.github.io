@@ -27,6 +27,11 @@ async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;
     const blogs = await fetchBlogs();
+    if (!Array.isArray(blogs)) {
+        console.error('Error fetching blogs:', blogs);
+        blogCarousel.innerHTML = '<div class="text-danger">Failed to load blogs.</div>';
+        return;
+    }
     blogCarousel.innerHTML = '';
     blogs.forEach(blog => {
         blogCarousel.innerHTML += `
@@ -58,3 +63,12 @@ async function renderBlogs() {
 
 // Call renderBlogs on page load
 document.addEventListener('DOMContentLoaded', renderBlogs);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('editBlogForm');
+    if (form) {
+        form.onsubmit = async function(e) {
+            // ...your code...
+        };
+    }
+});
