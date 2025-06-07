@@ -189,6 +189,11 @@ function isAdmin() {
 }
 
 // Hide or show admin buttons
+async function fetchBlogs() {
+    const res = await fetch('/.netlify/functions/get-blogs');
+    return await res.json();
+}
+
 async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;

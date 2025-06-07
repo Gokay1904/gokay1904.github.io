@@ -59,27 +59,32 @@
 
         // Prevent non-admins from submitting
         document.getElementById('editBlogForm').onsubmit = async function(e) {
-            if (localStorage.getItem('isAdmin') !== 'true') {
+            e.preventDefault();
+            if (!isAdmin()) {
                 alert('Only admin can create posts.');
-                e.preventDefault();
                 return false;
             }
-            e.preventDefault();
-            let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-            const id = document.getElementById('blogId').value || Date.now();
             const blog = {
-                id: Number(id),
                 header: document.getElementById('blogHeader').value,
                 title: document.getElementById('blogTitle').value,
                 description: document.getElementById('blogDesc').value,
                 image: document.getElementById('blogImage').value,
                 text: document.getElementById('blogText').value
             };
-            const idx = blogs.findIndex(b => b.id === Number(id));
-            if (idx > -1) blogs[idx] = blog;
-            else blogs.unshift(blog);
-            localStorage.setItem('myBlogs', JSON.stringify(blogs));
-            window.location.href = 'index.html#blogs';
+
+            const res = await fetch('/.netlify/functions/create-blog', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(blog)
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert('Blog post created!');
+                window.location.href = 'index.html#blogs';
+            } else {
+                alert('Error: ' + (data.error || 'Unknown error'));
+            }
         };
 
         document.getElementById('createBlogBtn').onclick = function() {
