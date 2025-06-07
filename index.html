@@ -81,39 +81,92 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="skills">
         <h2>Skills</h2>
-        <div class="skills-group">
-            <h4><i class="fas fa-code mr-2"></i>Technical Skills</h4>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <h4>Programming Languages</h4>
-                    <ul class="skills-list">
-                        <li>Python (Numpy, Pandas, Pytorch, Sklearn, Keras, Flask, ZeroMQ)</li>
-                        <li>C#</li>
-                        <li>C++</li>
-                        <li>Java</li>
-                        <li>Unity Engine</li>
-                        <li>Linux</li>
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>Microsoft Azure</li>
-                    </ul>
+        <div class="skills-flip-container" id="skillsFlipContainer">
+            <div class="skills-flip-inner">
+                <!-- Front: Technical Skills Card -->
+                <div class="skills-flip-front">
+                    <div id="technicalSkillsCard" class="card" style="background:#071022;border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
+                        <div class="row">
+                            <!-- Programming Languages -->
+                            <div class="col-md-3 mb-4">
+                                <div class="skills-group">
+                                    <h4><i class="fas fa-code mr-2"></i>Programming Languages</h4>
+                                    <ul class="skills-list">
+                                        <li><i class="fab fa-python mr-1"></i>Python</li>
+                                        <li><i class="fab fa-java mr-1"></i>Java</li>
+                                        <li><i class="fas fa-hashtag mr-1"></i>C#</li>
+                                        <li><i class="fas fa-code mr-1"></i>C++</li>
+                                        <li><i class="fas fa-database mr-1"></i>SQL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Tools & Technologies -->
+                            <div class="col-md-3 mb-4">
+                                <div class="skills-group">
+                                    <h4><i class="fas fa-tools mr-2"></i>Tools & Technologies</h4>
+                                    <ul class="skills-list">
+                                        <li><i class="fab fa-linux mr-1"></i>Linux</li>
+                                        <li><i class="fab fa-unity mr-1"></i>Unity Engine</li>
+                                        <li><i class="fab fa-microsoft mr-1"></i>Microsoft Azure</li>
+                                        <li><i class="fas fa-file-excel mr-1"></i>Excel</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Version Control -->
+                            <div class="col-md-3 mb-4">
+                                <div class="skills-group">
+                                    <h4><i class="fas fa-code-branch mr-2"></i>Version Control</h4>
+                                    <ul class="skills-list">
+                                        <li><i class="fab fa-git-alt mr-1"></i>Git</li>
+                                        <li><i class="fab fa-docker mr-1"></i>Docker</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Databases & BI -->
+                            <div class="col-md-3 mb-4">
+                                <div class="skills-group">
+                                    <h4><i class="fas fa-database mr-2"></i>Databases</h4>
+                                    <ul class="skills-list">
+                                        <li><i class="fas fa-leaf mr-1"></i>MongoDB</li>
+                                        <li><i class="fas fa-database mr-1"></i>MySQL</li>
+                                        <li><i class="fas fa-fire mr-1"></i>Firebase</li>
+                                    </ul>
+                                </div>
+                                <div class="skills-group mt-4">
+                                    <h4><i class="fas fa-chart-bar mr-2"></i>Data Visualization & BI</h4>
+                                    <ul class="skills-list">
+                                        <li><i class="fas fa-chart-bar mr-1"></i>PowerBI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button id="showSoftSkillsBtn" class="btn btn-outline-primary" style="border-radius:2rem;padding:0.5rem 2rem;">Show Soft Skills</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Back: Soft Skills Card -->
+                <div class="skills-flip-back">
+                    <div class="card" style="background:#071022;border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
+                        <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
+                        <ul class="skills-list">
+                            <li><i class="fas fa-search mr-1"></i>Googling</li>
+                            <li><i class="fas fa-terminal mr-1"></i>Prompt Engineering</li>
+                            <li><i class="fas fa-sync-alt mr-1"></i>Adaptability</li>
+                            <li><i class="fas fa-clock mr-1"></i>Time Management</li>
+                            <li><i class="fas fa-comments mr-1"></i>Communication</li>
+                            <li><i class="fas fa-lightbulb mr-1"></i>Creativity & Innovation</li>
+                            <li><i class="fas fa-puzzle-piece mr-1"></i>Problem Solving</li>
+                            <li><i class="fas fa-chalkboard-teacher mr-1"></i>Presentation</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <button id="backToTechnicalBtn" class="btn btn-outline-secondary" style="border-radius:2rem;padding:0.5rem 2rem;">Back to Technical Skills</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="skills-group">
-            <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
-            <ul class="skills-list">
-                <li>Googling</li>
-                <li>Prompt Engineering</li>
-                <li>Adaptability</li>
-                <li>Time Management</li>
-                <li>Communication</li>
-                <li>Creativity & Innovation</li>
-                <li>Problem Solving</li>
-                <li>Presentation</li>
-            </ul>
         </div>
     </section>
 

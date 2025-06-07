@@ -151,3 +151,9 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
+document.getElementById('showSoftSkillsBtn')?.addEventListener('click', function() {
+    document.getElementById('skillsFlipContainer').classList.add('flipped');
+});
+document.getElementById('backToTechnicalBtn')?.addEventListener('click', function() {
+    document.getElementById('skillsFlipContainer').classList.remove('flipped');
+});
