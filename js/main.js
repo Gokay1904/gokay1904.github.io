@@ -184,14 +184,13 @@ async function askAdmin() {
     }
 }
 
-function isAdmin() {
-    return localStorage.getItem('isAdmin') === 'true';
-}
-
-// Hide or show admin buttons
 async function fetchBlogs() {
     const res = await fetch('/.netlify/functions/get-blogs');
     return await res.json();
+}
+
+function isAdmin() {
+    return localStorage.getItem('isAdmin') === 'true';
 }
 
 async function renderBlogs() {
