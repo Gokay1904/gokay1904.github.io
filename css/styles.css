@@ -663,12 +663,24 @@ html {
     }
     #sidebarNav .nav-link {
       flex: 0 0 auto !important;
-      min-width: max-content !important;
-      max-width: 90vw !important;
+      min-width: 44px !important;
+      max-width: 56px !important;
       white-space: nowrap !important;
       margin: 0 0.7rem !important;
       overflow: hidden !important;
       text-overflow: ellipsis !important;
+      justify-content: center !important;
+      padding: 0.5rem 0.2rem !important;
+      color: #fff !important;
+    }
+    #sidebarNav .nav-link i {
+      margin-right: 0 !important;
+      font-size: 1.5em !important;
+      color: #fff !important;
+    }
+    #sidebarNav .nav-link span,
+    #sidebarNav .nav-link .nav-text {
+      display: none !important;
     }
   }
 
@@ -694,11 +706,7 @@ html {
     }
   }
 }
-@media (min-width: 901px) {
-  #navbarToggle {
-    display: none !important;
-  }
-}
+
 @media (max-width: 900px) and (orientation: portrait) {
   #navbarToggle {
     display: block !important;
