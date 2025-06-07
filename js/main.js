@@ -37,11 +37,30 @@ const pinnedRepos = [
 
 // pinned-projects alanına kartları ekle
 // Render project cards
-function renderProjects() {
+async function fetchPinnedRepos(username) {
+  // This uses the public GitHub API for user repos (no "pinned" endpoint, so we fetch all and pick top N by stars)
+  const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+  if (!response.ok) return [];
+  const repos = await response.json();
+  // Sort by stargazers_count and take top 2 (or more if you want)
+  return repos
+    .sort((a, b) => b.stargazers_count - a.stargazers_count)
+    .slice(0, 2)
+    .map(repo => ({
+      repo: repo.name,
+      link: repo.html_url,
+      description: repo.description || '',
+      tech: [] // Tech stack not available from API directly
+    }));
+}
+
+async function renderProjects() {
   const container = document.getElementById('pinned-projects');
   if (!container) return;
+  container.innerHTML = '<div class="text-center w-100 my-4">Loading projects...</div>';
+  const repos = await fetchPinnedRepos('Gokay1904');
   container.innerHTML = '';
-  pinnedRepos.forEach(repo => {
+  repos.forEach(repo => {
     const card = document.createElement('div');
     card.className = 'col-md-5 mb-4';
     card.innerHTML = `
@@ -50,7 +69,7 @@ function renderProjects() {
           <h4 class="project-title mb-2"><a href="${repo.link}" target="_blank">${repo.repo}</a></h4>
           <p class="project-desc mb-2">${repo.description}</p>
           <div class="project-tech mb-2">
-            ${repo.tech.map(t => `<span class="badge badge-pill badge-tech">${t}</span>`).join(' ')}
+            ${repo.tech.length ? repo.tech.map(t => `<span class="badge badge-pill badge-tech">${t}</span>`).join(' ') : ''}
           </div>
         </div>
       </div>
