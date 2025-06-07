@@ -397,16 +397,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function updateSidebarDirection() {
     if (window.innerWidth <= 900) {
-      if (window.matchMedia("(orientation: landscape)").matches) {
-        // Yatay mod: soldan açılan sidebar
-        sidebarNav.classList.add('vertical');
-        sidebarNav.style.top = '0';
-        sidebarNav.style.left = '-220px';
-      } else {
-        // Dikey mod: üstten açılan navbar
+      if (window.innerWidth > window.innerHeight) {
+        // Yatay mod: üstte yatay navbar
         sidebarNav.classList.remove('vertical');
         sidebarNav.style.left = '0';
-        sidebarNav.style.top = '-60px';
+        sidebarNav.style.top = '-60px'; // Kapalı başlasın
+      } else {
+        // Dikey mod: solda dikey sidebar
+        sidebarNav.classList.add('vertical');
+        sidebarNav.style.top = '0';
+        sidebarNav.style.left = '-220px'; // Kapalı başlasın
       }
     } else {
       sidebarNav.classList.remove('vertical');
@@ -422,14 +422,14 @@ document.addEventListener('DOMContentLoaded', function() {
   if (navbarToggle && sidebarNav) {
     navbarToggle.addEventListener('click', function(e) {
       if (sidebarNav.classList.contains('vertical')) {
-        // Yatay: soldan aç/kapat
+        // Dikey: soldan aç/kapa
         if (sidebarNav.style.left === '0px') {
           sidebarNav.style.left = '-220px';
         } else {
           sidebarNav.style.left = '0px';
         }
       } else {
-        // Dikey: üstten aç/kapat
+        // Yatay: üstten aç/kapa
         if (sidebarNav.style.top === '0px') {
           sidebarNav.style.top = '-60px';
         } else {
