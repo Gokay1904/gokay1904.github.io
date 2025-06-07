@@ -409,3 +409,18 @@ html {
     padding-bottom: 1rem;
     background: #071022;
 }
+
+.blog-card img {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.blog-card {
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(2,8,23,0.18);
+    transition: transform 0.15s;
+}
+.blog-card:hover {
+    transform: translateY(-4px) scale(1.03);
+}

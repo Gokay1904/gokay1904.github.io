@@ -167,3 +167,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+const blogs = [
+  {
+    id: 1,
+    image: "assets/blog1.jpg",
+    header: "Data Science Journey",
+    title: "How I Started in Data Science",
+    description: "A brief story about my first steps into data science.",
+    text: "Full blog post content goes here. You can add as much text as you want.",
+  },
+  {
+    id: 2,
+    image: "assets/blog2.jpg",
+    header: "Machine Learning Tips",
+    title: "Top 5 Tips for Beginners",
+    description: "Essential tips for anyone starting with machine learning.",
+    text: "Full blog post content goes here. You can add as much text as you want.",
+  }
+  // Add more blogs as needed
+];
+
+function renderBlogs() {
+  const blogList = document.getElementById('blog-list');
+  if (!blogList) return;
+  blogList.innerHTML = '';
+  blogs.forEach(blog => {
+    blogList.innerHTML += `
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 blog-card" style="cursor:pointer;" onclick="openBlog(${blog.id})">
+          <img src="${blog.image}" class="card-img-top" alt="${blog.header}">
+          <div class="card-body">
+            <h5 class="card-title">${blog.header}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
+            <p class="card-text">${blog.description}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+window.renderBlogs = renderBlogs; // Make it available globally
+renderBlogs();
+
+// Blog open logic
+window.openBlog = function(id) {
+  localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
+  window.location.href = 'blog.html';
+};

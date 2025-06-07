@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5" id="blog-detail"></div>
+  <script>
+    const blog = JSON.parse(localStorage.getItem('selectedBlog'));
+    if (blog) {
+      document.getElementById('blog-detail').innerHTML = `
+        <div class="card mb-4">
+          <img src="${blog.image}" class="card-img-top" alt="${blog.header}">
+          <div class="card-body">
+            <h2>${blog.header}</h2>
+            <h4 class="text-muted">${blog.title}</h4>
+            <p class="lead">${blog.description}</p>
+            <hr>
+            <div>${blog.text}</div>
+            <a href="index.html#blogs" class="btn btn-secondary mt-4">Back to Blogs</a>
+          </div>
+        </div>
+      `;
+    } else {
+      document.getElementById('blog-detail').innerHTML = '<p>Blog not found.</p>';
+    }
+  </script>
+</body>
+</html>
