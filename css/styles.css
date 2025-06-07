@@ -642,9 +642,7 @@ html {
     margin: 0 0.7rem !important;
     padding: 0.5rem 0.2rem !important;
   }
-  #sidebarNav h3 {
-    display: none !important;
-  }
+
 
   /* DİKEY MOD: Hamburger + üstte yatay navbar */
   @media (orientation: portrait) {
