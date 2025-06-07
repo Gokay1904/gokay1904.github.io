@@ -57,7 +57,13 @@
             }
         }
 
-        document.getElementById('editBlogForm').onsubmit = function(e) {
+        // Prevent non-admins from submitting
+        document.getElementById('editBlogForm').onsubmit = async function(e) {
+            if (localStorage.getItem('isAdmin') !== 'true') {
+                alert('Only admin can create posts.');
+                e.preventDefault();
+                return false;
+            }
             e.preventDefault();
             let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
             const id = document.getElementById('blogId').value || Date.now();

@@ -220,3 +220,21 @@ async function renderBlogs() {
 }
 window.renderBlogs = renderBlogs;
 renderBlogs();
+
+// Show/hide create post button
+function updateCreatePostButton() {
+    const btn = document.getElementById('createBlogBtn');
+    if (btn) btn.style.display = localStorage.getItem('isAdmin') === 'true' ? 'inline-block' : 'none';
+}
+
+// Only admin can open create post page
+document.getElementById('createBlogBtn').onclick = function() {
+    if (localStorage.getItem('isAdmin') === 'true') {
+        window.location.href = 'blog-edit.html';
+    } else {
+        alert('Only admin can create posts.');
+    }
+};
+
+// Call this after login and on page load
+updateCreatePostButton();
