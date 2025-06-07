@@ -676,18 +676,36 @@ html {
     text-overflow: ellipsis !important;
   }
   #navbarToggle {
+    display: block !important;
+    position: fixed !important;
     left: 2vw !important;
     top: 2vw !important;
     max-width: 56px;
     max-height: 56px;
+    z-index: 2001;
+    background: #020817;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    padding: 0.3em 0.7em;
   }
 }
 @media (max-width: 900px) {
   #navbarToggle {
+    display: block !important;
+    position: fixed !important;
     left: 2vw !important;
     top: 2vw !important;
     max-width: 56px;
     max-height: 56px;
+    z-index: 2001;
+    background: #020817;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    padding: 0.3em 0.7em;
   }
 }
 @media (min-width: 901px) {
