@@ -154,3 +154,16 @@ document.querySelectorAll('.header-social-icons a.social-icon-link').forEach(lin
         window.open(this.href, '_blank');
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const emailLink = document.getElementById('email-link');
+  if (emailLink) {
+    emailLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+});
