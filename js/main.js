@@ -126,7 +126,7 @@ style.innerHTML = `
   font-size: 0.95rem;
   margin-right: 0.4em;
   margin-bottom: 0.2em;
-  padding: 0.5em 0.95em;
+  padding: 0.5em 0.9em;
 }
 `;
 document.head.appendChild(style);
