@@ -94,34 +94,6 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
   });
 });
 
-// Section-based background color transitions (dark blue palette)
-const sectionColors = [
-  { id: 'about', color: 'linear-gradient(180deg, #050a30 0%, #020817 100%)' },
-  { id: 'education', color: 'linear-gradient(180deg, #020817 0%, #000c66 100%)' },
-  { id: 'skills', color: 'linear-gradient(180deg, #000c66 0%, #050a30 100%)' },
-  { id: 'experience', color: 'linear-gradient(180deg, #050a30 0%, #020817 100%)' },
-  { id: 'certifications', color: 'linear-gradient(180deg, #020817 0%, #000c66 100%)' },
-  { id: 'achievements', color: 'linear-gradient(180deg, #000c66 0%, #050a30 100%)' },
-  { id: 'contact', color: 'linear-gradient(180deg, #050a30 0%, #020817 100%)' }
-];
-
-function getCurrentSection() {
-  let current = sectionColors[0];
-  for (const section of sectionColors) {
-    const el = document.getElementById(section.id);
-    if (el && window.scrollY + 100 >= el.offsetTop) {
-      current = section;
-    }
-  }
-  return current;
-}
-
-window.addEventListener('scroll', () => {
-  const section = getCurrentSection();
-  document.body.style.background = section.color;
-  document.body.style.transition = 'background 0.7s';
-});
-
 // Project card pop effect on hover/focus
 const style = document.createElement('style');
 style.innerHTML = `
