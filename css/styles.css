@@ -29,7 +29,7 @@ h2, h3, .edu-title {
 }
 
 .section {
-    padding: 32px 20px;
+    padding: 32px 5px;
     background: #020817;
     border-radius: 1.5rem;
     box-shadow: 0 4px 32px rgba(2,8,23,0.18);
