@@ -220,11 +220,15 @@ async function renderBlogs() {
             </div>
         `;
     });
-    // Show/hide create post button
-    document.getElementById('createBlogBtn').style.display = isAdmin() ? 'inline-block' : 'none';
+    // Show/hide create post button for admin
+    const createBtn = document.getElementById('createBlogBtn');
+    if (createBtn) {
+        createBtn.style.display = isAdmin() ? 'inline-block' : 'none';
+    }
 }
-window.renderBlogs = renderBlogs;
-renderBlogs();
+
+// Call renderBlogs on page load
+document.addEventListener('DOMContentLoaded', renderBlogs);
 
 // Show/hide create post button
 function updateCreatePostButton() {
