@@ -507,7 +507,7 @@ html {
     box-shadow: 0 4px 18px rgba(2,8,23,0.18);
 }
 #mainContent {
-    margin-left: 220px; /* Sadece sidebar genişliği kadar */
+    margin-left: 0; /* Sadece sidebar genişliği kadar */
     margin-right: 0;
     width: auto;
 }
