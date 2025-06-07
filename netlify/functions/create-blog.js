@@ -9,7 +9,7 @@ export default async (request) => {
     if (!header || !title || !description || !image || !text) {
       return new Response('Missing fields', { status: 400 });
     }
-    const sql = neon(); // uses process.env.NETLIFY_DATABASE_URL automatically
+    const sql = neon(); // uses NETLIFY_DATABASE_URL
     const result = await sql`
       INSERT INTO posts (header, title, description, image, text, created_at)
       VALUES (${header}, ${title}, ${description}, ${image}, ${text}, NOW())
@@ -17,6 +17,7 @@ export default async (request) => {
     `;
     return Response.json({ success: true, id: result[0].id });
   } catch (err) {
+    console.error('Create blog error:', err); // For debugging
     return Response.json({ error: err.message }, { status: 500 });
   }
 };
