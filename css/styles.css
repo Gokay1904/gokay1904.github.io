@@ -212,7 +212,7 @@ html {
     transform: rotateY(180deg);
 }
 
-/* Make skills card and columns responsive and prevent overflow */
+/* Make skills card and columns responsive and prevent ovderflow */
 #skills .skills-flip-container,
 #skills .skills-flip-inner,
 #skills .skills-flip-front,
@@ -507,8 +507,8 @@ html {
     box-shadow: 0 4px 18px rgba(2,8,23,0.18);
 }
 #mainContent {
-    margin-left: 220px; /* Sadece sidebar genişliği kadar */
-    margin-right: 0;
+    margin-left:  0px; /* Sadece sidebar genişliği kadar */
+    margin-right: 0px;
     width: auto;
 }
 @media (max-width: 1200px) {
