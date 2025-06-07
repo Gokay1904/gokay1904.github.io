@@ -16,47 +16,40 @@ window.addEventListener('scroll', function() {
     document.body.style.transition = 'background 0.7s';
 });
 
-// Örnek JSON verisi
-// Example pinned repos (add "tech" field for manual tech stack)
+// Pinlenen projeleri backend API'dan bir defa çekip, constant olarak JS'e yazmak için örnek:
 const pinnedRepos = [
   {
-    "owner": "Gokay1904",
-    "repo": "PINN-TurbulentFlow-PirateNET",
-    "link": "https://github.com/Gokay1904/PINN-TurbulentFlow-PirateNET",
-    "description": "Predicting the pressure and velocity fields of a fluid using the RANS approach with Physics-Informed Neural Networks, specifically Physics Residual Adaptive Networks (PirateNET).",
-    "tech": ["Python", "PyTorch", "Deep Learning", "Physics-Informed NN"]
+    repo: "PINN-TurbulentFlow-PirateNET",
+    link: "https://github.com/Gokay1904/PINN-TurbulentFlow-PirateNET",
+    description: "Predicting the pressure and velocity fields of a fluid using the RANS approach with Physics-Informed Neural Networks, specifically Physics Residual Adaptive Networks (PirateNET).",
+    tech: ["Python", "PyTorch", "Deep Learning", "Physics-Informed NN"]
   },
   {
-    "owner": "Gokay1904",
-    "repo": "Financial-Forecasting-with-AI-Transformer-Models",
-    "link": "https://github.com/Gokay1904/Financial-Forecasting-with-AI-Transformer-Models",
-    "description": "Analyzing sentiment scores from Twitter texts using transformer models (RoBERTa, BERT) and VADER, then comparing them with actual stock values by treating the problem as both numerical and categorical.",
-    "tech": ["Python", "Transformers", "NLP", "BERT", "RoBERTa"]
+    repo: "Financial-Forecasting-with-AI-Transformer-Models",
+    link: "https://github.com/Gokay1904/Financial-Forecasting-with-AI-Transformer-Models",
+    description: "Analyzing sentiment scores from Twitter texts using transformer models (RoBERTa, BERT) and VADER, then comparing them with actual stock values by treating the problem as both numerical and categorical.",
+    tech: ["Python", "Transformers", "NLP", "BERT", "RoBERTa"]
+  },
+  {
+    repo: "ITU-Physics-Data-Analysis",
+    link: "https://github.com/Gokay1904/ITU-Physics-Data-Analysis",
+    description: "A repository containing projects from my university courses, focusing on solving real-world problems such as cancer detection and particle detection.",
+    tech: ["Python", "Jupyter Notebook", "Data Analysis"]
+  },
+  {
+    repo: "ITU-Physics-Computational-Analysis",
+    link: "https://github.com/Gokay1904/ITU-Physics-Computational-Analysis",
+    description: "A repository containing solutions to some of the questions in the computational analysis methods courses at my university. It includes applications developed in various languages such as Matlab, Python, and C++.",
+    tech: ["Python", "Matlab", "C++", "Jupyter Notebook"]
   }
 ];
 
-// Fetch pinned repositories from GitHub using the alternative gh-pinned-repos API
-async function fetchPinnedRepos(username) {
-  // Uses https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/ as a public proxy for pinned repos
-  const response = await fetch(`https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=${username}`);
-  if (!response.ok) return [];
-  const repos = await response.json();
-  // Each repo has: repo, link, description, language, languageColor, stars, forks
-  return repos.map(repo => ({
-    repo: repo.repo,
-    link: repo.link,
-    description: repo.description || '',
-    tech: repo.language ? [repo.language] : []
-  }));
-}
-
-async function renderProjects() {
+// Projeleri HTML'e bastırmak için:
+function renderProjects() {
   const container = document.getElementById('pinned-projects');
   if (!container) return;
-  container.innerHTML = '<div class="text-center w-100 my-4">Loading projects...</div>';
-  const repos = await fetchPinnedRepos('Gokay1904');
   container.innerHTML = '';
-  repos.forEach(repo => {
+  pinnedRepos.forEach(repo => {
     const card = document.createElement('div');
     card.className = 'col-md-5 mb-4';
     card.innerHTML = `
@@ -65,7 +58,7 @@ async function renderProjects() {
           <h4 class="project-title mb-2"><a href="${repo.link}" target="_blank">${repo.repo}</a></h4>
           <p class="project-desc mb-2">${repo.description}</p>
           <div class="project-tech mb-2">
-            ${repo.tech.length ? repo.tech.map(t => `<span class="badge badge-pill badge-tech">${t}</span>`).join(' ') : ''}
+            ${repo.tech.map(t => `<span class="badge badge-pill badge-tech">${t}</span>`).join(' ')}
           </div>
         </div>
       </div>
