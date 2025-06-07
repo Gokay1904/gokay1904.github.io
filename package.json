@@ -15,5 +15,6 @@
     "live-server": "^1.2.1"
   },
   "author": "Your Name",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
