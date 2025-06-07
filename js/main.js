@@ -168,44 +168,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+async function askAdmin() {
+    const password = prompt("Enter admin password:");
+    if (!password) return;
+    const res = await fetch('/.netlify/functions/admin-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
+    });
+    if (res.ok) {
+        localStorage.setItem('isAdmin', 'true');
+        location.reload();
+    } else {
+        alert('Wrong password!');
+    }
+}
+
 function isAdmin() {
     return localStorage.getItem('isAdmin') === 'true';
 }
 
-function requireAdmin(next) {
-    if (isAdmin()) {
-        next();
-    } else {
-        const pass = prompt("Admin password:");
-        if (pass === "YOUR_ADMIN_PASSWORD") { // Change this to your real password
-            localStorage.setItem('isAdmin', 'true');
-            next();
-        } else {
-            alert("Wrong password!");
-        }
-    }
-}
-
-document.getElementById('createBlogBtn').onclick = function() {
-    requireAdmin(() => {
-        window.location.href = 'blog-edit.html';
-    });
-};
-
-const BLOGS_PER_VIEW = 3;
-let blogStart = 0;
-
-async function fetchBlogs() {
-    const res = await fetch('/.netlify/functions/get-blogs');
-    return await res.json();
-}
-
+// Hide or show admin buttons
 async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;
     const blogs = await fetchBlogs();
     blogCarousel.innerHTML = '';
-    blogs.slice(0, 3).forEach(blog => {
+    blogs.forEach(blog => {
         blogCarousel.innerHTML += `
             <div class="col-md-4 mb-4" style="min-width:340px;max-width:340px;">
                 <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
@@ -226,18 +215,8 @@ async function renderBlogs() {
             </div>
         `;
     });
+    // Show/hide create post button
+    document.getElementById('createBlogBtn').style.display = isAdmin() ? 'inline-block' : 'none';
 }
 window.renderBlogs = renderBlogs;
 renderBlogs();
-
-// Admin şifresi sor
-function askAdmin() {
-    const pass = prompt("Admin işlemleri için şifre girin:");
-    if (pass === "seninsifren") {
-        isAdmin = true;
-        renderBlogs();
-    } else {
-        isAdmin = false;
-        renderBlogs();
-    }
-}
