@@ -296,3 +296,22 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 });
+
+async function confirmDeleteBlog(id) {
+    if (!isAdmin()) {
+        alert('Only admin can delete posts.');
+        return;
+    }
+    if (confirm('Are you sure you want to delete this blog post?')) {
+        const res = await fetch(`/.netlify/functions/delete-blog?id=${id}`, {
+            method: 'DELETE'
+        });
+        const data = await res.json();
+        if (data.success) {
+            alert('Blog post deleted!');
+            renderBlogs(); // Refresh the blog list
+        } else {
+            alert('Error deleting blog: ' + (data.error || 'Unknown error'));
+        }
+    }
+}

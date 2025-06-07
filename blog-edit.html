@@ -66,6 +66,20 @@
                 alert('Error: ' + (data.error || 'Unknown error'));
             }
         };
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            if (id) {
+                const res = await fetch(`/.netlify/functions/get-blog?id=${id}`);
+                const blog = await res.json();
+                document.getElementById('blogHeader').value = blog.header;
+                document.getElementById('blogTitle').value = blog.title;
+                document.getElementById('blogDesc').value = blog.description;
+                document.getElementById('blogImage').value = blog.image;
+                document.getElementById('blogText').value = blog.text;
+            }
+        });
     </script>
 </body>
 </html>
