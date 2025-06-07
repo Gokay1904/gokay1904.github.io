@@ -649,7 +649,6 @@ html {
   word-break: normal;
   white-space: normal;
   margin: 0 auto;
-  max-width: 700px;
   font-size: 1.08rem;
   line-height: 1.6;
 }
@@ -743,5 +742,14 @@ body, html {
 @media (min-width: 900px) {
   #mainContent {
     margin-left: 220px; /* Sidebar genişliği kadar */
+  }
+}
+
+@media (max-width: 900px) {
+  .section,
+  .about-container,
+  .header-about-text {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
   }
 }
