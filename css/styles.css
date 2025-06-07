@@ -286,8 +286,8 @@ html {
 }
 
 .skills-card-transparent {
-    background: transparent !important;
-    box-shadow: none !important;
+    background: #020817 !important;
+    box-shadow: 0 2px 16px rgba(2,8,23,0.18) !important;
 }
 
 @media (max-width: 991px) {
