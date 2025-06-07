@@ -285,6 +285,11 @@ html {
     font-size: 1.13rem;
 }
 
+.skills-card-transparent {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
 @media (max-width: 991px) {
     #skills .col-md-3 {
         flex: 1 1 100%;
