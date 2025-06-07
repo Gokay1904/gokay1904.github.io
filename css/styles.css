@@ -301,3 +301,55 @@ html {
         flex-direction: column;
     }
 }
+
+/* Make the skills container keep the max height of both sides and push content below */
+#skills .skills-flip-container {
+    perspective: 1200px;
+    width: 100%;
+    min-height: 0;
+    /* Remove position:relative if present */
+    position: relative;
+    display: block;
+    /* Ensure stacking context for absolute children */
+}
+
+#skills .skills-flip-inner {
+    width: 100%;
+    min-height: 0;
+    transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+    transform-style: preserve-3d;
+    /* Remove position:relative here */
+    display: block;
+}
+
+/* Ensure both faces are in normal flow and container expands */
+#skills .skills-flip-front,
+#skills .skills-flip-back {
+    position: static;
+    width: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    min-height: 0;
+    display: block;
+}
+
+#skills .skills-flip-back {
+    transform: rotateY(180deg);
+}
+
+/* Hide the back face when not flipped, and front face when flipped */
+#skills .skills-flip-container:not(.flipped) .skills-flip-back {
+    display: none;
+}
+#skills .skills-flip-container.flipped .skills-flip-front {
+    display: none;
+}
+#skills .skills-flip-container.flipped .skills-flip-back {
+    display: block;
+}
+#skills .skills-flip-container:not(.flipped) .skills-flip-front {
+    display: block;
+}
+
+/* Remove absolute positioning and min-height from faces for natural height */
