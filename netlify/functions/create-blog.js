@@ -1,6 +1,7 @@
 import { neon } from '@netlify/neon';
 
 export default async (request) => {
+  console.log('create-blog function invoked'); // Add this line
   if (request.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
   }
