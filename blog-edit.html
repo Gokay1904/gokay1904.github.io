@@ -52,8 +52,13 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(blog)
             });
-
-            const data = await res.json();
+            let data;
+            try {
+                data = await res.json();
+            } catch (e) {
+                alert('Server error: Could not parse response.');
+                return;
+            }
             if (data.success) {
                 alert('Blog post created!');
                 window.location.href = 'index.html#blogs';
