@@ -83,8 +83,7 @@ document.querySelectorAll('#sidebarNav a.nav-link').forEach(link => {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        // Adjust this offset if you want more/less space above the header
-        const offset = 20;
+        const offset = 20; // Adjust if you have a fixed header
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({
           top: top,
