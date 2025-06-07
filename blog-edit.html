@@ -34,6 +34,7 @@
             <button type="submit" class="btn btn-primary">Save Blog</button>
             <a href="index.html" class="btn btn-secondary ml-2">Cancel</a>
         </form>
+        <button id="createBlogBtn" class="btn btn-success">+ Create Post</button>
     </div>
     <script>
         // Parse query string for ?id=...
@@ -73,6 +74,10 @@
             else blogs.unshift(blog);
             localStorage.setItem('myBlogs', JSON.stringify(blogs));
             window.location.href = 'index.html#blogs';
+        };
+
+        document.getElementById('createBlogBtn').onclick = function() {
+            window.location.href = 'edit.html';
         };
     </script>
 </body>
