@@ -166,9 +166,17 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
-document.getElementById('showTechnicalBtn')?.addEventListener('click', function() {
-    document.getElementById('skillsFlipContainer').classList.remove('flipped');
+const techBtn = document.getElementById('showTechnicalBtn');
+const softBtn = document.getElementById('showSoftSkillsBtn');
+const flipContainer = document.getElementById('skillsFlipContainer');
+
+techBtn?.addEventListener('click', function() {
+    flipContainer.classList.remove('flipped');
+    techBtn.classList.add('active', 'btn-skill-active');
+    softBtn.classList.remove('active', 'btn-skill-active');
 });
-document.getElementById('showSoftSkillsBtn')?.addEventListener('click', function() {
-    document.getElementById('skillsFlipContainer').classList.add('flipped');
+softBtn?.addEventListener('click', function() {
+    flipContainer.classList.add('flipped');
+    softBtn.classList.add('active', 'btn-skill-active');
+    techBtn.classList.remove('active', 'btn-skill-active');
 });

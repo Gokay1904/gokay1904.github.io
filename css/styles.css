@@ -56,6 +56,16 @@ h2, h3, .edu-title {
     color: #fff;
 }
 
+/* Add this for active button state */
+.btn-skill-active,
+.btn-outline-primary.active,
+.btn-outline-secondary.active {
+    background-color: #000c66 !important;
+    color: #fff !important;
+    border-color: #000c66 !important;
+    box-shadow: 0 2px 12px rgba(0,12,102,0.12);
+}
+
 .footer {
     background-color: #020817;
     color: #f6f6f6;
@@ -176,7 +186,7 @@ html {
     text-decoration: none;
 }
 
-/* Add or update for flip effect */
+/* Make sure this is in your styles.css */
 .skills-flip-container {
     perspective: 1200px;
     width: 100%;
