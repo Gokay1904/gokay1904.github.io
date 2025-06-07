@@ -202,7 +202,6 @@ async function renderBlogs() {
     if (!blogCarousel) return;
     const blogs = await fetchBlogs();
     if (!Array.isArray(blogs)) {
-        console.error('Error fetching blogs:', blogs);
         blogCarousel.innerHTML = '<div class="text-danger">Failed to load blogs.</div>';
         return;
     }
@@ -234,6 +233,8 @@ async function renderBlogs() {
         createBtn.style.display = isAdmin() ? 'inline-block' : 'none';
     }
 }
+
+// Render blogs on page load
 document.addEventListener('DOMContentLoaded', renderBlogs);
 
 // --- Create Post Button ---
