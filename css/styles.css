@@ -261,6 +261,30 @@ html {
     word-break: break-word;
 }
 
+/* Add or update for header social icons and about text */
+.header-social-icons a {
+    color: #f6f6f6 !important;
+    transition: transform 0.18s cubic-bezier(.4,2,.6,1), color 0.18s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
+}
+.header-social-icons a:hover, .header-social-icons a:focus {
+    color: #b6e0fe !important;
+    transform: scale(1.15) translateY(-3px);
+    background: none;
+    text-decoration: none;
+}
+.header-about-text {
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.13rem;
+}
+
 @media (max-width: 991px) {
     #skills .col-md-3 {
         flex: 1 1 100%;
