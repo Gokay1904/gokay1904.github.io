@@ -213,6 +213,7 @@ renderBlogs();
 function renderRightBlogs() {
   const rightBlogList = document.getElementById('right-blog-list');
   if (!rightBlogList) return;
+  const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
   rightBlogList.innerHTML = '';
   blogs.forEach(blog => {
     rightBlogList.innerHTML += `
@@ -232,6 +233,7 @@ renderRightBlogs();
 
 // Blog open logic
 window.openBlog = function(id) {
+  const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
   localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
   window.location.href = 'blog.html';
 };
