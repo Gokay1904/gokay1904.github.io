@@ -197,6 +197,12 @@ async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;
     const blogs = await fetchBlogs();
+    console.log('Fetched blogs:', blogs); // <-- Add this line
+    if (!Array.isArray(blogs)) {
+        console.error('Error fetching blogs:', blogs);
+        blogCarousel.innerHTML = '<div class="text-danger">Failed to load blogs.</div>';
+        return;
+    }
     blogCarousel.innerHTML = '';
     blogs.forEach(blog => {
         blogCarousel.innerHTML += `

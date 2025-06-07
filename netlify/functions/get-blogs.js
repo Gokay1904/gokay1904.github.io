@@ -8,9 +8,10 @@ export default async () => {
       FROM posts
       ORDER BY created_at DESC
     `;
-    return Response.json(result);
+    return Response.json(result); // result should be an array
   } catch (err) {
-    return Response.json({ error: err.message }, { status: 500 });
+    console.error('get-blogs error:', err);
+    return Response.json([], { status: 500 }); // Return an empty array on error
   }
 };
 
