@@ -1,34 +1,71 @@
 import { neon } from '@neondatabase/serverless';
 
 export async function handler(event, context) {
-  const id = event.queryStringParameters?.id;
-  if (!id) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: 'Missing blog id' }),
-      headers: { 'Content-Type': 'application/json' }
-    };
-  }
   try {
     const sql = neon(process.env.NETLIFY_DATABASE_URL);
-    const result = await sql`SELECT * FROM posts WHERE id = ${id}`;
-    if (result.length === 0) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: 'Blog not found.' }),
-        headers: { 'Content-Type': 'application/json' }
-      };
-    }
+    const result = await sql`
+      SELECT id, header, title, description, image, text, created_at
+      FROM posts
+      ORDER BY created_at DESC
+    `;
     return {
       statusCode: 200,
-      body: JSON.stringify(result[0]),
+      body: JSON.stringify(result),
       headers: { 'Content-Type': 'application/json' }
     };
-  } catch (error) {
+  } catch (err) {
+    console.error('get-blogs error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: err.message }),
       headers: { 'Content-Type': 'application/json' }
     };
   }
+}
+
+async function fetchBlogs() {
+    const res = await fetch('/.netlify/functions/get-blogs');
+    return await res.json();
+}
+
+function isAdmin() {
+    return localStorage.getItem('isAdmin') === 'true';
+}
+
+async function renderBlogs() {
+    const blogCarousel = document.getElementById('blog-carousel');
+    if (!blogCarousel) return;
+    const blogs = await fetchBlogs();
+    if (!Array.isArray(blogs)) {
+        console.error('Error fetching blogs:', blogs);
+        blogCarousel.innerHTML = '<div class="text-danger">Failed to load blogs.</div>';
+        return;
+    }
+    blogCarousel.innerHTML = '';
+    blogs.forEach(blog => {
+        blogCarousel.innerHTML += `
+            <div class="col-md-4 mb-4" style="min-width:340px;max-width:340px;">
+                <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
+                    ${isAdmin() ? `
+                    <div class="d-flex justify-content-end align-items-start p-2" style="position:absolute;top:0;right:0;z-index:2;gap:0.5rem;">
+                        <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
+                    </div>` : ''}
+                    <div onclick="openBlog(${blog.id})" style="cursor:pointer;">
+                        <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">${blog.header}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${blog.title}</h6>
+                            <p class="card-text">${blog.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    // Show/hide create post button for admin
+    const createBtn = document.getElementById('createBlogBtn');
+    if (createBtn) {
+        createBtn.style.display = isAdmin() ? 'inline-block' : 'none';
+    }
 }
