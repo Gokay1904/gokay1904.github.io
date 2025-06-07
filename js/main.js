@@ -210,6 +210,26 @@ function renderBlogs() {
 window.renderBlogs = renderBlogs; // Make it available globally
 renderBlogs();
 
+function renderRightBlogs() {
+  const rightBlogList = document.getElementById('right-blog-list');
+  if (!rightBlogList) return;
+  rightBlogList.innerHTML = '';
+  blogs.forEach(blog => {
+    rightBlogList.innerHTML += `
+      <div class="card mb-3 blog-card-mini" style="cursor:pointer;" onclick="openBlog(${blog.id})">
+        <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:110px;object-fit:cover;">
+        <div class="card-body p-2">
+          <div class="font-weight-bold" style="font-size:1.05rem;color:#fff;">${blog.header}</div>
+          <div class="text-muted" style="font-size:0.97rem;">${blog.title}</div>
+          <div style="font-size:0.93rem;color:#b6bfc9;">${blog.description}</div>
+        </div>
+      </div>
+    `;
+  });
+}
+window.renderRightBlogs = renderRightBlogs;
+renderRightBlogs();
+
 // Blog open logic
 window.openBlog = function(id) {
   localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));

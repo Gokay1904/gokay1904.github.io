@@ -424,3 +424,34 @@ html {
 .blog-card:hover {
     transform: translateY(-4px) scale(1.03);
 }
+
+#rightBlogBar {
+    min-width: 260px;
+    width: 320px;
+    max-width: 100vw;
+    background: #020817;
+    box-shadow: -2px 0 16px rgba(2,8,23,0.12);
+    overflow-y: auto;
+}
+.blog-card-mini {
+    background: #071022;
+    border-radius: 0.7rem;
+    border: none;
+    box-shadow: 0 2px 12px rgba(2,8,23,0.10);
+    transition: transform 0.13s;
+}
+.blog-card-mini:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 18px rgba(2,8,23,0.18);
+}
+#mainContent {
+    margin-right: 320px;
+}
+@media (max-width: 1200px) {
+    #rightBlogBar {
+        display: none !important;
+    }
+    #mainContent {
+        margin-right: 0;
+    }
+}

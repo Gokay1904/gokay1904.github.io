@@ -21,6 +21,13 @@
         <a class="nav-link text-white mb-2" href="#contact"><i class="fas fa-envelope mr-2"></i>Get in Touch</a>
     </nav>
 
+    <!-- Add this just after your sidebarNav and before your main content (header/sections) -->
+    <div id="rightBlogBar" class="d-none d-lg-flex flex-column position-fixed vh-100 p-4"
+         style="right:0;top:0;z-index:1040;width:320px;background:#020817;box-shadow:-2px 0 16px rgba(2,8,23,0.12);overflow-y:auto;">
+        <h3 class="mb-4" style="font-weight:700;color:#fff;">My Blogs</h3>
+        <div id="right-blog-list"></div>
+    </div>
+
     <header>
         <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img" style="width:180px;height:180px;border-radius:50%;border:4px solid #fff;box-shadow:0 2px 16px rgba(0,0,0,0.12);margin-bottom:1.5rem;">
         <h1>Gökay Akçay</h1>
@@ -44,295 +51,297 @@
         </p>
     </header>
 
-    <section class="section" id="about">
-        <div class="about-container" style="background:#020817;border-radius:1.2rem;padding:2rem 1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);margin-bottom:2.5rem;">
-            <h2 style="font-weight:700;margin-bottom:1.5rem;">About Me</h2>
-            <p class="lead header-about-text" style="max-width:1100px;margin:0 auto 2.5rem auto;">
-                Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
-            </p>
-            <div class="row">
-                <!-- Education Section -->
-                <div class="col-md-6 mb-4">
-                    <h2><i class="fas fa-graduation-cap mr-2"></i>Education</h2>
-                    <div class="education-container" style="background:#020817;border-radius:1.2rem;padding:1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-2">
-                            <h3 class="edu-title mb-0" style="font-size:1.15rem;font-weight:700;">
-                                B.S. Physics Engineering – Istanbul Technical University
-                            </h3>
-                            <span class="edu-gpa" style="font-size:1.02rem;font-weight:700;color:#f6f6f6;">
-                                <strong>GPA: 3.38/4.0</strong> &nbsp; | &nbsp; 2020-2025
-                            </span>
-                        </div>
-                        <div class="edu-english mb-3" style="color:#f6f6f6;font-size:0.97rem;">
-                            ITU English Proficiency Grade: 94/100
-                        </div>
-                        <div>
-                            <div class="edu-project-box" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;margin-bottom:1rem;">
-                                <div class="font-weight-bold mb-1">Graduation Project 1</div>
-                                <div style="font-size:1.02rem;">
-                                    Financial Forecasting with AI Transformer Models<br>
-                                    <span style="color:#f6f6f6;font-size:0.97rem;">(Analyzing Twitter and Stock Correlations)</span>
+    <div id="mainContent" style="margin-right:320px;">
+        <section class="section" id="about">
+            <div class="about-container" style="background:#020817;border-radius:1.2rem;padding:2rem 1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);margin-bottom:2.5rem;">
+                <h2 style="font-weight:700;margin-bottom:1.5rem;">About Me</h2>
+                <p class="lead header-about-text" style="max-width:1100px;margin:0 auto 2.5rem auto;">
+                    Skilled in collaborative team environments, with a strong focus on effective communication and building professional relationships. Adaptable and quick to learn new technologies, always seeking growth and new challenges. Committed to contributing to impactful software projects while continuously developing both professionally and personally.
+                </p>
+                <div class="row">
+                    <!-- Education Section -->
+                    <div class="col-md-6 mb-4">
+                        <h2><i class="fas fa-graduation-cap mr-2"></i>Education</h2>
+                        <div class="education-container" style="background:#020817;border-radius:1.2rem;padding:1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between mb-2">
+                                <h3 class="edu-title mb-0" style="font-size:1.15rem;font-weight:700;">
+                                    B.S. Physics Engineering – Istanbul Technical University
+                                </h3>
+                                <span class="edu-gpa" style="font-size:1.02rem;font-weight:700;color:#f6f6f6;">
+                                    <strong>GPA: 3.38/4.0</strong> &nbsp; | &nbsp; 2020-2025
+                                </span>
+                            </div>
+                            <div class="edu-english mb-3" style="color:#f6f6f6;font-size:0.97rem;">
+                                ITU English Proficiency Grade: 94/100
+                            </div>
+                            <div>
+                                <div class="edu-project-box" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;margin-bottom:1rem;">
+                                    <div class="font-weight-bold mb-1">Graduation Project 1</div>
+                                    <div style="font-size:1.02rem;">
+                                        Financial Forecasting with AI Transformer Models<br>
+                                        <span style="color:#f6f6f6;font-size:0.97rem;">(Analyzing Twitter and Stock Correlations)</span>
+                                    </div>
+                                </div>
+                                <div class="edu-project-box" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;">
+                                    <div class="font-weight-bold mb-1">Graduation Project 2</div>
+                                    <div style="font-size:1.02rem;">
+                                        Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
+                                        <span style="color:#f6f6f6;font-size:0.97rem;">(PINNs for Fluid Dynamics)</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="edu-project-box" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;">
-                                <div class="font-weight-bold mb-1">Graduation Project 2</div>
-                                <div style="font-size:1.02rem;">
-                                    Estimation of Turbulent Flow Using Physics-Informed Neural Networks<br>
-                                    <span style="color:#f6f6f6;font-size:0.97rem;">(PINNs for Fluid Dynamics)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="edu-focuses mt-4" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;">
-                            <div class="font-weight-bold mb-1">Focus Areas</div>
-                            <div style="font-size:1.04rem;">
-                                Quantum Mechanics, Software, Statistics, Artificial Intelligence &amp; PINNs, Electronics, Optical Design
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Experience Section -->
-                <div class="col-md-6 mb-4">
-                    <h2><i class="fas fa-briefcase mr-2"></i>Experience</h2>
-                    <div class="experience-container" style="background:#020817;border-radius:1.2rem;padding:1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style="background:transparent;">
-                                <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
-                                <em>02/2024 – 07/2024</em>
-                                <ul>
-                                    <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
-                                    <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
-                                    <li>Developed UI and backend architecture using Unity Engine with C#.</li>
-                                    <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="skills">
-        <h2>Skills</h2>
-        <div class="d-flex justify-content-center mb-4">
-            <button id="showTechnicalBtn" class="btn btn-outline-primary mr-2 active" style="border-radius:2rem;padding:0.5rem 2rem;">Technical Skills</button>
-            <button id="showSoftSkillsBtn" class="btn btn-outline-secondary" style="border-radius:2rem;padding:0.5rem 2rem;">Soft Skills</button>
-        </div>
-        <div class="skills-flip-container" id="skillsFlipContainer">
-            <div class="skills-flip-inner">
-                <!-- Front: Technical Skills Card -->
-                <div class="skills-flip-front">
-                    <div id="technicalSkillsCard" class="card skills-card-transparent" style="border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
-                        <div class="row">
-                            <!-- Programming Languages -->
-                            <div class="col-md-3 mb-4">
-                                <div class="skills-group">
-                                    <h4><i class="fas fa-code mr-2"></i>Programming Languages</h4>
-                                    <ul class="skills-list">
-                                        <li><i class="fab fa-python mr-1"></i>Python</li>
-                                        <li><i class="fab fa-java mr-1"></i>Java</li>
-                                        <li><i class="fas fa-hashtag mr-1"></i>C#</li>
-                                        <li><i class="fas fa-code mr-1"></i>C++</li>
-                                        <li><i class="fas fa-database mr-1"></i>SQL</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Tools & Technologies -->
-                            <div class="col-md-3 mb-4">
-                                <div class="skills-group">
-                                    <h4><i class="fas fa-tools mr-2"></i>Tools & Technologies</h4>
-                                    <ul class="skills-list">
-                                        <li><i class="fab fa-linux mr-1"></i>Linux</li>
-                                        <li><i class="fab fa-unity mr-1"></i>Unity Engine</li>
-                                        <li><i class="fab fa-microsoft mr-1"></i>Microsoft Azure</li>
-                                        <li><i class="fas fa-file-excel mr-1"></i>Excel</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Version Control -->
-                            <div class="col-md-3 mb-4">
-                                <div class="skills-group">
-                                    <h4><i class="fas fa-code-branch mr-2"></i>Version Control</h4>
-                                    <ul class="skills-list">
-                                        <li><i class="fab fa-git-alt mr-1"></i>Git</li>
-                                        <li><i class="fab fa-docker mr-1"></i>Docker</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Databases & BI -->
-                            <div class="col-md-3 mb-4">
-                                <div class="skills-group">
-                                    <h4><i class="fas fa-database mr-2"></i>Databases</h4>
-                                    <ul class="skills-list">
-                                        <li><i class="fas fa-leaf mr-1"></i>MongoDB</li>
-                                        <li><i class="fas fa-database mr-1"></i>MySQL</li>
-                                        <li><i class="fas fa-fire mr-1"></i>Firebase</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-group mt-4">
-                                    <h4><i class="fas fa-chart-bar mr-2"></i>Data Visualization & BI</h4>
-                                    <ul class="skills-list">
-                                        <li><i class="fas fa-chart-bar mr-1"></i>PowerBI</li>
-                                    </ul>
+                            <div class="edu-focuses mt-4" style="background:#071022;border-radius:0.7rem;padding:1rem 1.2rem;">
+                                <div class="font-weight-bold mb-1">Focus Areas</div>
+                                <div style="font-size:1.04rem;">
+                                    Quantum Mechanics, Software, Statistics, Artificial Intelligence &amp; PINNs, Electronics, Optical Design
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Back: Soft Skills Card -->
-                <div class="skills-flip-back">
-                    <div class="card skills-card-transparent" style="border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
-                        <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
-                        <ul class="skills-list">
-                            <li><i class="fas fa-search mr-1"></i>Googling</li>
-                            <li><i class="fas fa-terminal mr-1"></i>Prompt Engineering</li>
-                            <li><i class="fas fa-sync-alt mr-1"></i>Adaptability</li>
-                            <li><i class="fas fa-clock mr-1"></i>Time Management</li>
-                            <li><i class="fas fa-comments mr-1"></i>Communication</li>
-                            <li><i class="fas fa-lightbulb mr-1"></i>Creativity & Innovation</li>
-                            <li><i class="fas fa-puzzle-piece mr-1"></i>Problem Solving</li>
-                            <li><i class="fas fa-chalkboard-teacher mr-1"></i>Presentation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="projects">
-        <h2>Projects</h2>
-        <div id="pinned-projects" class="row justify-content-center"></div>
-    </section>
-
-    <section class="section" id="certifications">
-        <h2>Certifications</h2>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="background:transparent;"><strong>IBM</strong> | Machine Learning with Python</li>
-            <li class="list-group-item" style="background:transparent;"><strong>Datacamp</strong> | Data Analyst with Python</li>
-            <li class="list-group-item" style="background:transparent;"><strong>Stanford Online</strong> | Supervised Machine Learning</li>
-            <li class="list-group-item" style="background:transparent;"><strong>HackerRank</strong> | SQL (Intermediate) Certificate</li>
-            <li class="list-group-item" style="background:transparent;"><strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect</li>
-        </ul>
-    </section>
-
-    <section class="section" id="achievements">
-        <h2>Achievements</h2>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="background:transparent;">
-                <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
-                Coderspace & iyzico | April - May 2024<br>
-                <ul>
-                    <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
-                    <li>The dataset included time series data such as post-pandemic merchant registrations, product categories, user purchase frequencies, sales timestamps, and net sales amounts.</li>
-                    <li>Tackled the problem as a time series forecasting task using models like XGBoost, LightGBM, CatBoost, Extra Trees, Decision Trees, and Neural Networks to capture complex temporal and behavioral patterns.</li>
-                    <li>Focused on estimating behavioral patterns and sales performance of newly joined merchants in future periods.</li>
-                    <li>Our solution involved feature engineering on time-based variables, segment analysis, and ensemble modeling for robust forecasting.</li>
-                    <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-
-    <section class="section" id="contact">
-        <h2>Get in Touch</h2>
-        <div class="row justify-content-center">
-            <!-- Contact Information (Left) -->
-            <div class="col-md-5 mb-4 text-left d-flex flex-column align-items-start justify-content-center contact-info-sticky" style="border-radius:1rem;background:#071022;padding:2rem 1.5rem;min-height:320px; position:relative;">
-                <div class="contact-info-inner">
-                    <h4 style="color:#fff;font-weight:700;margin-bottom:1.2rem;">Contact Information</h4>
-                    <p style="margin-bottom:1.1rem;">Fill up the form and I'll get back to you as soon as possible.</p>
-                    <div class="mb-2">
-                        <strong>Email:</strong><br>
-                        <a href="mailto:gokay.akcay19@gmail.com" style="color:#b6e0fe;">gokay.akcay19@gmail.com</a>
-                    </div>
-                    <div class="mb-2">
-                        <strong>Location:</strong><br>
-                        Türkiye, Istanbul
-                    </div>
-                    <div class="mt-3 contact-social" style="margin-top:0.5rem !important;">
-                        <strong>Connect with me:</strong>
-                        <div class="d-flex align-items-center mt-2" style="gap:2.2rem;">
-                            <a href="https://github.com/Gokay1904" target="_blank" aria-label="GitHub" style="font-size:2.7rem;">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank" aria-label="LinkedIn" style="font-size:2.7rem;">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
+                    <!-- Experience Section -->
+                    <div class="col-md-6 mb-4">
+                        <h2><i class="fas fa-briefcase mr-2"></i>Experience</h2>
+                        <div class="experience-container" style="background:#020817;border-radius:1.2rem;padding:1.5rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" style="background:transparent;">
+                                    <strong>Software Engineer Intern</strong> – Sutech Otonom Teknoloji A.Ş<br>
+                                    <em>02/2024 – 07/2024</em>
+                                    <ul>
+                                        <li>Integrated communication protocols like IP, TCP, UDP bind through NetMQ, ZeroMQ libraries using C# & Python.</li>
+                                        <li>Developed a YOLOv8-based image processing system for distinguishing between humans and sea vehicles.</li>
+                                        <li>Developed UI and backend architecture using Unity Engine with C#.</li>
+                                        <li>Gained proficiency in Linux environments, Git version control, Dockerization, and Agile development practices within Microsoft Azure.</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Contact Form (Right) -->
-            <div class="col-md-7">
-                <form class="mx-auto" style="max-width:500px;" method="POST" action="https://formspree.io/f/xqabelgp">
-                    <div class="form-group text-left">
-                        <label for="name">Your Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="form-group text-left">
-                        <label for="email">Your Email</label>
-                        <input type="email" class="form-control" id="email" name="from" required>
-                    </div>
-                    <div class="form-group text-left">
-                        <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group text-left">
-                        <label for="body">Message</label>
-                        <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group text-left">
-                        <label for="attachment">Attachment (optional)</label>
-                        <input type="file" class="form-control-file" id="attachment" disabled>
-                        <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- My Blogs Section -->
-    <section class="section" id="blogs">
-        <h2>My Blogs</h2>
-        <div class="row" id="blog-list">
-            <!-- Blog cards will be rendered here by JS -->
-        </div>
-    </section>
+        <section class="section" id="skills">
+            <h2>Skills</h2>
+            <div class="d-flex justify-content-center mb-4">
+                <button id="showTechnicalBtn" class="btn btn-outline-primary mr-2 active" style="border-radius:2rem;padding:0.5rem 2rem;">Technical Skills</button>
+                <button id="showSoftSkillsBtn" class="btn btn-outline-secondary" style="border-radius:2rem;padding:0.5rem 2rem;">Soft Skills</button>
+            </div>
+            <div class="skills-flip-container" id="skillsFlipContainer">
+                <div class="skills-flip-inner">
+                    <!-- Front: Technical Skills Card -->
+                    <div class="skills-flip-front">
+                        <div id="technicalSkillsCard" class="card skills-card-transparent" style="border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
+                            <div class="row">
+                                <!-- Programming Languages -->
+                                <div class="col-md-3 mb-4">
+                                    <div class="skills-group">
+                                        <h4><i class="fas fa-code mr-2"></i>Programming Languages</h4>
+                                        <ul class="skills-list">
+                                            <li><i class="fab fa-python mr-1"></i>Python</li>
+                                            <li><i class="fab fa-java mr-1"></i>Java</li>
+                                            <li><i class="fas fa-hashtag mr-1"></i>C#</li>
+                                            <li><i class="fas fa-code mr-1"></i>C++</li>
+                                            <li><i class="fas fa-database mr-1"></i>SQL</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Tools & Technologies -->
+                                <div class="col-md-3 mb-4">
+                                    <div class="skills-group">
+                                        <h4><i class="fas fa-tools mr-2"></i>Tools & Technologies</h4>
+                                        <ul class="skills-list">
+                                            <li><i class="fab fa-linux mr-1"></i>Linux</li>
+                                            <li><i class="fab fa-unity mr-1"></i>Unity Engine</li>
+                                            <li><i class="fab fa-microsoft mr-1"></i>Microsoft Azure</li>
+                                            <li><i class="fas fa-file-excel mr-1"></i>Excel</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Version Control -->
+                                <div class="col-md-3 mb-4">
+                                    <div class="skills-group">
+                                        <h4><i class="fas fa-code-branch mr-2"></i>Version Control</h4>
+                                        <ul class="skills-list">
+                                            <li><i class="fab fa-git-alt mr-1"></i>Git</li>
+                                            <li><i class="fab fa-docker mr-1"></i>Docker</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Databases & BI -->
+                                <div class="col-md-3 mb-4">
+                                    <div class="skills-group">
+                                        <h4><i class="fas fa-database mr-2"></i>Databases</h4>
+                                        <ul class="skills-list">
+                                            <li><i class="fas fa-leaf mr-1"></i>MongoDB</li>
+                                            <li><i class="fas fa-database mr-1"></i>MySQL</li>
+                                            <li><i class="fas fa-fire mr-1"></i>Firebase</li>
+                                        </ul>
+                                    </div>
+                                    <div class="skills-group mt-4">
+                                        <h4><i class="fas fa-chart-bar mr-2"></i>Data Visualization & BI</h4>
+                                        <ul class="skills-list">
+                                            <li><i class="fas fa-chart-bar mr-1"></i>PowerBI</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Back: Soft Skills Card -->
+                    <div class="skills-flip-back">
+                        <div class="card skills-card-transparent" style="border-radius:1rem;box-shadow:0 2px 16px rgba(2,8,23,0.18);padding:2rem 1.5rem;">
+                            <h4><i class="fas fa-users mr-2"></i>Soft Skills</h4>
+                            <ul class="skills-list">
+                                <li><i class="fas fa-search mr-1"></i>Googling</li>
+                                <li><i class="fas fa-terminal mr-1"></i>Prompt Engineering</li>
+                                <li><i class="fas fa-sync-alt mr-1"></i>Adaptability</li>
+                                <li><i class="fas fa-clock mr-1"></i>Time Management</li>
+                                <li><i class="fas fa-comments mr-1"></i>Communication</li>
+                                <li><i class="fas fa-lightbulb mr-1"></i>Creativity & Innovation</li>
+                                <li><i class="fas fa-puzzle-piece mr-1"></i>Problem Solving</li>
+                                <li><i class="fas fa-chalkboard-teacher mr-1"></i>Presentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Sadece siz göreceksiniz, örnek için display:none kaldırıp test edin -->
-    <div id="blog-admin-form" style="display:none; margin-bottom:2rem;">
-        <h4>Add/Edit Blog Post</h4>
-        <form id="addBlogForm">
-            <input type="hidden" id="blogId">
-            <div class="form-group">
-                <label>Header</label>
-                <input type="text" class="form-control" id="blogHeader" required>
+        <section class="section" id="projects">
+            <h2>Projects</h2>
+            <div id="pinned-projects" class="row justify-content-center"></div>
+        </section>
+
+        <section class="section" id="certifications">
+            <h2>Certifications</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="background:transparent;"><strong>IBM</strong> | Machine Learning with Python</li>
+                <li class="list-group-item" style="background:transparent;"><strong>Datacamp</strong> | Data Analyst with Python</li>
+                <li class="list-group-item" style="background:transparent;"><strong>Stanford Online</strong> | Supervised Machine Learning</li>
+                <li class="list-group-item" style="background:transparent;"><strong>HackerRank</strong> | SQL (Intermediate) Certificate</li>
+                <li class="list-group-item" style="background:transparent;"><strong>Udemy</strong> | Python for Financial Analysis and Algorithmic Trading & Python for Finance and Algorithmic Trading with QuantConnect</li>
+            </ul>
+        </section>
+
+        <section class="section" id="achievements">
+            <h2>Achievements</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="background:transparent;">
+                    <strong>iyzico Datathon (Top 10 Finalist – Honorable Mention Award)</strong><br>
+                    Coderspace & iyzico | April - May 2024<br>
+                    <ul>
+                        <li>Forecasting competition aimed at predicting the total volume of secure transactions for the following year on iyzico, a Turkish fintech company.</li>
+                        <li>The dataset included time series data such as post-pandemic merchant registrations, product categories, user purchase frequencies, sales timestamps, and net sales amounts.</li>
+                        <li>Tackled the problem as a time series forecasting task using models like XGBoost, LightGBM, CatBoost, Extra Trees, Decision Trees, and Neural Networks to capture complex temporal and behavioral patterns.</li>
+                        <li>Focused on estimating behavioral patterns and sales performance of newly joined merchants in future periods.</li>
+                        <li>Our solution involved feature engineering on time-based variables, segment analysis, and ensemble modeling for robust forecasting.</li>
+                        <li>Selected among the top 10 teams, invited to present at iyzico Quarter, and received an Honorable Mention and ₺10,000 prize for innovative modeling and business insights.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Get in Touch</h2>
+            <div class="row justify-content-center">
+                <!-- Contact Information (Left) -->
+                <div class="col-md-5 mb-4 text-left d-flex flex-column align-items-start justify-content-center contact-info-sticky" style="border-radius:1rem;background:#071022;padding:2rem 1.5rem;min-height:320px; position:relative;">
+                    <div class="contact-info-inner">
+                        <h4 style="color:#fff;font-weight:700;margin-bottom:1.2rem;">Contact Information</h4>
+                        <p style="margin-bottom:1.1rem;">Fill up the form and I'll get back to you as soon as possible.</p>
+                        <div class="mb-2">
+                            <strong>Email:</strong><br>
+                            <a href="mailto:gokay.akcay19@gmail.com" style="color:#b6e0fe;">gokay.akcay19@gmail.com</a>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Location:</strong><br>
+                            Türkiye, Istanbul
+                        </div>
+                        <div class="mt-3 contact-social" style="margin-top:0.5rem !important;">
+                            <strong>Connect with me:</strong>
+                            <div class="d-flex align-items-center mt-2" style="gap:2.2rem;">
+                                <a href="https://github.com/Gokay1904" target="_blank" aria-label="GitHub" style="font-size:2.7rem;">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/gökay-akçay-647522188/" target="_blank" aria-label="LinkedIn" style="font-size:2.7rem;">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Form (Right) -->
+                <div class="col-md-7">
+                    <form class="mx-auto" style="max-width:500px;" method="POST" action="https://formspree.io/f/xqabelgp">
+                        <div class="form-group text-left">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="email">Your Email</label>
+                            <input type="email" class="form-control" id="email" name="from" required>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="body">Message</label>
+                            <textarea class="form-control" id="body" name="body" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="attachment">Attachment (optional)</label>
+                            <input type="file" class="form-control-file" id="attachment" disabled>
+                            <small class="form-text text-muted">Attachments must be added manually in your email client after clicking "Send".</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" id="blogTitle" required>
+        </section>
+
+        <!-- My Blogs Section -->
+        <section class="section" id="blogs">
+            <h2>My Blogs</h2>
+            <div class="row" id="blog-list">
+                <!-- Blog cards will be rendered here by JS -->
             </div>
-            <div class="form-group">
-                <label>Description</label>
-                <input type="text" class="form-control" id="blogDesc" required>
-            </div>
-            <div class="form-group">
-                <label>Image URL</label>
-                <input type="text" class="form-control" id="blogImage" required>
-            </div>
-            <div class="form-group">
-                <label>Text</label>
-                <textarea class="form-control" id="blogText" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Blog</button>
-            <button type="button" class="btn btn-secondary" id="cancelEdit" style="display:none;">Cancel</button>
-        </form>
+        </section>
+
+        <!-- Sadece siz göreceksiniz, örnek için display:none kaldırıp test edin -->
+        <div id="blog-admin-form" style="display:none; margin-bottom:2rem;">
+            <h4>Add/Edit Blog Post</h4>
+            <form id="addBlogForm">
+                <input type="hidden" id="blogId">
+                <div class="form-group">
+                    <label>Header</label>
+                    <input type="text" class="form-control" id="blogHeader" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" id="blogTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" id="blogDesc" required>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" class="form-control" id="blogImage" required>
+                </div>
+                <div class="form-group">
+                    <label>Text</label>
+                    <textarea class="form-control" id="blogText" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Blog</button>
+                <button type="button" class="btn btn-secondary" id="cancelEdit" style="display:none;">Cancel</button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            &copy; 2025 Gökay Akçay | Portfolio
+        </footer>
     </div>
-
-    <footer class="footer">
-        &copy; 2025 Gökay Akçay | Portfolio
-    </footer>
 
     <script src="js/main.js"></script>
 </body>
