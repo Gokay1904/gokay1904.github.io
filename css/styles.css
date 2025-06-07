@@ -176,7 +176,7 @@ html {
     text-decoration: none;
 }
 
-/* Add this for card flip effect */
+/* Add or update for flip effect */
 .skills-flip-container {
     perspective: 1200px;
     width: 100%;

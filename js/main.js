@@ -166,9 +166,9 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
+document.getElementById('showTechnicalBtn')?.addEventListener('click', function() {
+    document.getElementById('skillsFlipContainer').classList.remove('flipped');
+});
 document.getElementById('showSoftSkillsBtn')?.addEventListener('click', function() {
     document.getElementById('skillsFlipContainer').classList.add('flipped');
-});
-document.getElementById('backToTechnicalBtn')?.addEventListener('click', function() {
-    document.getElementById('skillsFlipContainer').classList.remove('flipped');
 });
