@@ -255,32 +255,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// blog-edit.html or related JS file
-document.getElementById('editBlogForm').onsubmit = async function(e) {
-    e.preventDefault();
-    if (localStorage.getItem('isAdmin') !== 'true') {
-        alert('Only admin can create posts.');
-        return false;
-    }
-    const blog = {
-        header: document.getElementById('blogHeader').value,
-        title: document.getElementById('blogTitle').value,
-        description: document.getElementById('blogDesc').value,
-        image: document.getElementById('blogImage').value,
-        text: document.getElementById('blogText').value
-    };
+document.addEventListener('DOMContentLoaded', function() {
+    const editForm = document.getElementById('editBlogForm');
+    if (editForm) {
+        editForm.onsubmit = async function(e) {
+            e.preventDefault();
+            if (localStorage.getItem('isAdmin') !== 'true') {
+                alert('Only admin can create posts.');
+                return false;
+            }
+            const blog = {
+                header: document.getElementById('blogHeader').value,
+                title: document.getElementById('blogTitle').value,
+                description: document.getElementById('blogDesc').value,
+                image: document.getElementById('blogImage').value,
+                text: document.getElementById('blogText').value
+            };
 
-    const res = await fetch('/.netlify/functions/create-blog', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(blog)
-    });
+            const res = await fetch('/.netlify/functions/create-blog', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(blog)
+            });
 
-    const data = await res.json();
-    if (data.success) {
-        alert('Blog post created!');
-        window.location.href = 'index.html#blogs';
-    } else {
-        alert('Error: ' + (data.error || 'Unknown error'));
+            const data = await res.json();
+            if (data.success) {
+                alert('Blog post created!');
+                window.location.href = 'index.html#blogs';
+            } else {
+                alert('Error: ' + (data.error || 'Unknown error'));
+            }
+        };
     }
-};
+});
