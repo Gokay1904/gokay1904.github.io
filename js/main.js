@@ -222,7 +222,7 @@ document.getElementById('blogNext').onclick = function() {
         renderBlogs();
     }
 };
-// Optional: Auto-swipe every 5 seconds if more than 3 blogs
+// Otomatik swipe
 setInterval(() => {
     const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
     if (blogs.length > BLOGS_PER_VIEW) {
