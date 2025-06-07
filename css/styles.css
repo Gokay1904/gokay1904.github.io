@@ -385,3 +385,15 @@ html {
 }
 
 /* Remove absolute positioning and min-height from faces for natural height */
+
+/* Technical Skills butonunun outline ve text rengini secondary ile aynı yap */
+.btn-outline-primary {
+    color: #b6bfc9 !important;
+    border-color: #b6bfc9 !important;
+    background-color: transparent !important;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    color: #fff !important;
+    background-color: #000c66 !important;
+    border-color: #000c66 !important;
+}
