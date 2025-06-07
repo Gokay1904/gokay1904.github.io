@@ -319,6 +319,9 @@
         </footer>
     </div>
 
+    <button onclick="askAdmin()" style="position:fixed;bottom:10px;right:10px;z-index:999;">Admin Girişi</button>
+    <button onclick="localStorage.removeItem('isAdmin'); location.reload();" style="position:fixed;bottom:50px;right:10px;z-index:999;">Admin Logout</button>
+
     <script src="js/main.js"></script>
 </body>
 </html>

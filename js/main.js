@@ -168,27 +168,52 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function isAdmin() {
+    return localStorage.getItem('isAdmin') === 'true';
+}
+
+function requireAdmin(next) {
+    if (isAdmin()) {
+        next();
+    } else {
+        const pass = prompt("Admin password:");
+        if (pass === "YOUR_ADMIN_PASSWORD") { // Change this to your real password
+            localStorage.setItem('isAdmin', 'true');
+            next();
+        } else {
+            alert("Wrong password!");
+        }
+    }
+}
+
 document.getElementById('createBlogBtn').onclick = function() {
-    window.location.href = 'blog-edit.html';
+    requireAdmin(() => {
+        window.location.href = 'blog-edit.html';
+    });
 };
 
 const BLOGS_PER_VIEW = 3;
 let blogStart = 0;
 
-function renderBlogs() {
+async function fetchBlogs() {
+    const res = await fetch('/.netlify/functions/get-blogs');
+    return await res.json();
+}
+
+async function renderBlogs() {
     const blogCarousel = document.getElementById('blog-carousel');
     if (!blogCarousel) return;
-    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
+    const blogs = await fetchBlogs();
     blogCarousel.innerHTML = '';
-    const visibleBlogs = blogs.slice(blogStart, blogStart + BLOGS_PER_VIEW);
-    visibleBlogs.forEach(blog => {
+    blogs.slice(0, 3).forEach(blog => {
         blogCarousel.innerHTML += `
             <div class="col-md-4 mb-4" style="min-width:340px;max-width:340px;">
                 <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
+                    ${isAdmin() ? `
                     <div class="d-flex justify-content-end align-items-start p-2" style="position:absolute;top:0;right:0;z-index:2;gap:0.5rem;">
                         <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
                         <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); confirmDeleteBlog(${blog.id})">Delete</button>
-                    </div>
+                    </div>` : ''}
                     <div onclick="openBlog(${blog.id})" style="cursor:pointer;">
                         <img src="${blog.image}" class="card-img-top" alt="${blog.header}" style="height:180px;object-fit:cover;">
                         <div class="card-body">
@@ -201,54 +226,18 @@ function renderBlogs() {
             </div>
         `;
     });
-    document.getElementById('blogPrev').disabled = blogStart === 0;
-    document.getElementById('blogNext').disabled = blogStart + BLOGS_PER_VIEW >= blogs.length;
 }
 window.renderBlogs = renderBlogs;
 renderBlogs();
 
-document.getElementById('blogPrev').onclick = function() {
-    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-    if (blogStart > 0) {
-        blogStart -= BLOGS_PER_VIEW;
-        if (blogStart < 0) blogStart = 0;
+// Admin şifresi sor
+function askAdmin() {
+    const pass = prompt("Admin işlemleri için şifre girin:");
+    if (pass === "seninsifren") {
+        isAdmin = true;
+        renderBlogs();
+    } else {
+        isAdmin = false;
         renderBlogs();
     }
-};
-document.getElementById('blogNext').onclick = function() {
-    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-    if (blogStart + BLOGS_PER_VIEW < blogs.length) {
-        blogStart += BLOGS_PER_VIEW;
-        renderBlogs();
-    }
-};
-// Otomatik swipe
-setInterval(() => {
-    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-    if (blogs.length > BLOGS_PER_VIEW) {
-        if (blogStart + BLOGS_PER_VIEW < blogs.length) {
-            blogStart += BLOGS_PER_VIEW;
-        } else {
-            blogStart = 0;
-        }
-        renderBlogs();
-    }
-}, 5000);
-
-window.editBlog = function(id) {
-    window.location.href = `blog-edit.html?id=${id}`;
-};
-window.confirmDeleteBlog = function(id) {
-    if (confirm('Are you sure you want to delete this blog post?')) {
-        let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-        blogs = blogs.filter(b => b.id !== id);
-        localStorage.setItem('myBlogs', JSON.stringify(blogs));
-        if (blogStart >= blogs.length) blogStart = Math.max(0, blogs.length - BLOGS_PER_VIEW);
-        renderBlogs();
-    }
-};
-window.openBlog = function(id) {
-    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-    localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));
-    window.location.href = 'blog.html';
-};
+}
