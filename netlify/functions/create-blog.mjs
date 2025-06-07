@@ -34,24 +34,3 @@ export async function handler(event, context) {
     };
   }
 }
-
-export async function handler(event, context) {
-  try {
-    const sql = neon();
-    const rows = await sql`
-      SELECT id, header, title, description, image, text, created_at
-      FROM posts
-      ORDER BY created_at DESC
-    `;
-    return {
-      statusCode: 200,
-      body: JSON.stringify(rows),
-    };
-  } catch (error) {
-    console.error('get-blogs error:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
-    };
-  }
-}
