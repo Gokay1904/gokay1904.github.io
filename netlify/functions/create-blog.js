@@ -1,7 +1,7 @@
-import { neon } from '@netlify/neon';
+import { neon } from '@neondatabase/serverless';
 
 export async function handler(event, context) {
-  console.log('create-blog function invoked'); // Add this line
+  console.log('create-blog function invoked');
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -16,7 +16,7 @@ export async function handler(event, context) {
         body: JSON.stringify({ error: 'Missing fields' }),
       };
     }
-    const sql = neon(); // uses NETLIFY_DATABASE_URL
+    const sql = neon(process.env.NETLIFY_DATABASE_URL); // Use your env variable
     const result = await sql`
       INSERT INTO posts (header, title, description, image, text, created_at)
       VALUES (${header}, ${title}, ${description}, ${image}, ${text}, NOW())
@@ -27,7 +27,7 @@ export async function handler(event, context) {
       body: JSON.stringify({ success: true, id: result[0].id }),
     };
   } catch (error) {
-    console.error('Create blog error:', error); // For debugging
+    console.error('Create blog error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
