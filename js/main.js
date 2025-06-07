@@ -172,14 +172,18 @@ document.getElementById('createBlogBtn').onclick = function() {
     window.location.href = 'blog-edit.html';
 };
 
+const BLOGS_PER_VIEW = 3;
+let blogStart = 0;
+
 function renderBlogs() {
-    const blogList = document.getElementById('blog-list');
-    if (!blogList) return;
+    const blogCarousel = document.getElementById('blog-carousel');
+    if (!blogCarousel) return;
     const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-    blogList.innerHTML = '';
-    blogs.forEach(blog => {
-        blogList.innerHTML += `
-            <div class="col-md-6 col-lg-4 mb-4">
+    blogCarousel.innerHTML = '';
+    const visibleBlogs = blogs.slice(blogStart, blogStart + BLOGS_PER_VIEW);
+    visibleBlogs.forEach(blog => {
+        blogCarousel.innerHTML += `
+            <div class="col-md-4 mb-4" style="min-width:340px;max-width:340px;">
                 <div class="card h-100 blog-card position-relative p-0" style="overflow:hidden;">
                     <div class="d-flex justify-content-end align-items-start p-2" style="position:absolute;top:0;right:0;z-index:2;gap:0.5rem;">
                         <button class="btn btn-sm btn-warning" onclick="event.stopPropagation(); editBlog(${blog.id})">Edit</button>
@@ -197,23 +201,52 @@ function renderBlogs() {
             </div>
         `;
     });
+    document.getElementById('blogPrev').disabled = blogStart === 0;
+    document.getElementById('blogNext').disabled = blogStart + BLOGS_PER_VIEW >= blogs.length;
 }
 window.renderBlogs = renderBlogs;
 renderBlogs();
 
+document.getElementById('blogPrev').onclick = function() {
+    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
+    if (blogStart > 0) {
+        blogStart -= BLOGS_PER_VIEW;
+        if (blogStart < 0) blogStart = 0;
+        renderBlogs();
+    }
+};
+document.getElementById('blogNext').onclick = function() {
+    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
+    if (blogStart + BLOGS_PER_VIEW < blogs.length) {
+        blogStart += BLOGS_PER_VIEW;
+        renderBlogs();
+    }
+};
+// Optional: Auto-swipe every 5 seconds if more than 3 blogs
+setInterval(() => {
+    const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
+    if (blogs.length > BLOGS_PER_VIEW) {
+        if (blogStart + BLOGS_PER_VIEW < blogs.length) {
+            blogStart += BLOGS_PER_VIEW;
+        } else {
+            blogStart = 0;
+        }
+        renderBlogs();
+    }
+}, 5000);
+
 window.editBlog = function(id) {
     window.location.href = `blog-edit.html?id=${id}`;
 };
-
 window.confirmDeleteBlog = function(id) {
     if (confirm('Are you sure you want to delete this blog post?')) {
         let blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
         blogs = blogs.filter(b => b.id !== id);
         localStorage.setItem('myBlogs', JSON.stringify(blogs));
+        if (blogStart >= blogs.length) blogStart = Math.max(0, blogs.length - BLOGS_PER_VIEW);
         renderBlogs();
     }
 };
-
 window.openBlog = function(id) {
     const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
     localStorage.setItem('selectedBlog', JSON.stringify(blogs.find(b => b.id === id)));

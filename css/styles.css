@@ -460,3 +460,23 @@ html {
         margin-right: 0;
     }
 }
+
+/* Add to your styles.css for better carousel look */
+#blog-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    min-height: 420px;
+}
+#blog-carousel .card {
+    margin-right: 1.5rem;
+}
+#blog-carousel .card:last-child {
+    margin-right: 0;
+}
+@media (max-width: 1200px) {
+    #blog-carousel .col-md-4 {
+        min-width: 90vw;
+        max-width: 90vw;
+    }
+}
