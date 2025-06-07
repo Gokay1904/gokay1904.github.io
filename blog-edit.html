@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Blog Post</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Create Blog Post</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background:#020817;">
     <div class="container mt-5" style="max-width:600px;">
-        <h2 class="mb-4 text-white" id="editTitle">Create Blog Post</h2>
+        <h2 class="text-white mb-4">Create Blog Post</h2>
         <form id="editBlogForm">
-            <input type="hidden" id="blogId">
             <div class="form-group">
                 <label class="text-white">Header</label>
                 <input type="text" class="form-control" id="blogHeader" required>
@@ -34,30 +32,12 @@
             <button type="submit" class="btn btn-primary">Save Blog</button>
             <a href="index.html" class="btn btn-secondary ml-2">Cancel</a>
         </form>
-        <button id="createBlogBtn" class="btn btn-success">+ Create Post</button>
     </div>
     <script>
-        // Parse query string for ?id=...
-        function getQueryId() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('id');
-        }
-        const blogId = getQueryId();
-        if (blogId) {
-            document.getElementById('editTitle').textContent = 'Edit Blog Post';
-            const blogs = JSON.parse(localStorage.getItem('myBlogs') || '[]');
-            const blog = blogs.find(b => b.id == blogId);
-            if (blog) {
-                document.getElementById('blogId').value = blog.id;
-                document.getElementById('blogHeader').value = blog.header;
-                document.getElementById('blogTitle').value = blog.title;
-                document.getElementById('blogDesc').value = blog.description;
-                document.getElementById('blogImage').value = blog.image;
-                document.getElementById('blogText').value = blog.text;
-            }
+        function isAdmin() {
+            return localStorage.getItem('isAdmin') === 'true';
         }
 
-        // Prevent non-admins from submitting
         document.getElementById('editBlogForm').onsubmit = async function(e) {
             e.preventDefault();
             if (!isAdmin()) {
@@ -86,11 +66,6 @@
                 alert('Error: ' + (data.error || 'Unknown error'));
             }
         };
-
-        document.getElementById('createBlogBtn').onclick = function() {
-            window.location.href = 'edit.html';
-        };
-
     </script>
 </body>
 </html>
