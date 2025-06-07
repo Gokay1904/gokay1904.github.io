@@ -179,3 +179,13 @@ softBtn?.addEventListener('click', function() {
     softBtn.classList.add('active', 'btn-skill-active');
     techBtn.classList.remove('active', 'btn-skill-active');
 });
+
+document.querySelectorAll('.header-social-icons a.social-icon-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.header-social-icons a.social-icon-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        setTimeout(() => this.classList.remove('active'), 1500); // Hide after 1.5s
+        window.open(this.href, '_blank');
+    });
+});
